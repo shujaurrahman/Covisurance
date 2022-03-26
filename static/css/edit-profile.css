@@ -1,0 +1,85 @@
+@import url(../css/color.css);
+body {
+    margin: 0;
+    padding-top: 40px;
+    color: var(--dark-three);
+    background: var(--light-two) !important;
+    position: relative;
+    height: 100%;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 1rem 0 .5rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile .user-name {
+    margin: 0 0 0 0;
+    color: var(--main-color);
+}
+.account-settings .user-profile .user-email {
+    margin: 0;
+    font-size: 15px !important;
+    font-weight: 400;
+    color: var(--dark-one);
+}
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+    color: var(--dark-two);
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: var(--main-color) !;
+}
+
+.card-body .text-primary{
+    color: var(--main-color) !important;
+}
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+    border: 1px solid var(--dark-three) !important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: var(--light-two) !important;
+    color: var(--dark-two);
+}
+
+.card {
+    background: var(--light-one) !important;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+.btn-secondary{
+    background-color: var(--dark-three) !important;
+    border-color: var(--dark-one) !important;
+}
+
+.btn-secondary:hover{
+    background-color: var(--dark-two) !important;
+    color: var(--dark-three) !important;
+}
+.btn-primary{
+    background-color:var(--main-color) !important;
+    border-color: var(--dark-three) !important;
+}
+.btn-primary:hover{
+    background-color: var(--light-three) !important ;
+    color: var(--dark-three) !important;
+}

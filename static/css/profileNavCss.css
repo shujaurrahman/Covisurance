@@ -1,0 +1,110 @@
+@import url(./color.css);
+header {
+  width: 100%;
+  background-color: var(--light-one);
+  overflow: hidden;
+  position: relative;
+}
+nav {
+  width: 100%;
+  position: relative;
+
+}
+.active{
+  visibility: hidden;
+}
+.logo {
+  width: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img{
+    content: url("./static/img/logo.png");
+}
+nav .container {
+    background-color: var(--light-two);
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+    align-items: center;
+}
+.container {
+    position: relative;
+    z-index: 100;
+    max-width: 92rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+}
+/*  */
+.links{
+  margin-left: 40px;
+}
+
+a{
+    text-decoration: none;
+}
+.links a {
+  display: inline-block;
+  padding: 0.9rem 1.2rem;
+  color: var(--dark-one);
+  font-size: 1.05rem;
+  font-weight: 600 ;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: 0.3s;
+
+}
+
+.links a.active {
+  background-color: var(--main-color);
+  color: var(--light-one);
+  border-radius: 2rem;
+  font-size: 1rem;
+  padding: 0.9rem 2.1rem;
+  margin-left: 1rem;
+}
+
+.links a:hover {
+  color: var(--main-color);
+}
+
+.links a.active:hover {
+  color: var(--dark-one);
+  background-color: var(--light-two);
+}
+.logo img {
+    width: 27px;
+    margin-right: 0.3rem;
+}
+@media (max-width: 1280px){
+    nav .container {
+    height: 4.5rem;
+  }
+  .logo {
+    width: 65px;
+  }
+  .links a {
+    font-size: 0.8rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+}
+        nav{
+            position:relative;
+            top: 0;
+            left:0;
+
+        }
+        .logo{
+            position: absolute;
+            left: 24px;
+            top: 13px;
+            z-index: 3000;
+            width: 40px !important;
+        }
+/* 
+        img{
+            margin: 8px;
+            width: 30px;
+        } */
