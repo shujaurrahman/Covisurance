@@ -21,12 +21,15 @@ $logout = "../logout/logout.php";
     ?>
     <link rel="stylesheet" href="../static/css/profile.css">
     <!-- <link rel="stylesheet" href="../static/css/profileNavCss.css"> -->
-    <link rel="stylesheet" href="../static/css/style.css">
     <style>
         .active {
             visibility: hidden;
         }
+
     </style>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+  
 </head>
 
 <body>
@@ -87,7 +90,6 @@ $logout = "../logout/logout.php";
             togglemenu.classList.toggle('open')
         }
     </script>
-
 </body>
 
 </html>

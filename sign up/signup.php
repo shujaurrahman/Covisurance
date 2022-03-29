@@ -110,6 +110,17 @@ $signUpMssg = "";
 $signUpError = "";
 $signUpDisplay = "none";
 $Mssgsuccess="";
+$otpsuccess="";
+$otpnotsuccess="";
+
+$otpmssg="";
+$otperror="";
+$otpdisplay="none";
+
+
+$email = "";
+$name = "";
+$errors = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $submit = true;
@@ -224,46 +235,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (
       !$boolPasswordError and !$boolConfirmPasswordError and !$boolUserError and !$boolEmailError
-    ) {
-      //  echo !$boolPasswordError,!$boolConfirmPasswordError,!$boolUserError,!$boolEmailError;
+    ) 
+    {
+      $encpass = password_hash($password, PASSWORD_BCRYPT);
+      $code = rand(999999, 111111);
+      $status = "notverified";
       $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-      // $sql = "INSERT INTO $tableName (`first_name`,`last_name`,`username`,`email`,`birthday`,`phonenumber`,`password`)
-      //           VALUES('$firstName','$lastName','$username','$email','$birthday','$phoneNumber','$passwordHash')";
-
-
-
-      $sql="INSERT INTO `alluser`( `first_name`, `last_name`, `username`, `email`, `birthday`, `phonenumber`, `password`) VALUES 
-      ('$firstName','$lastName','$username','$email','$birthday','$phoneNumber','$passwordHash')";
-      $result = mysqli_query($conn, $sql);
+      $sql="INSERT INTO `alluser`( `first_name`, `last_name`, `username`, `email`, `birthday`, `phonenumber`, `password`,`code`,`status`) VALUES 
+      ('$firstName','$lastName','$username','$email','$birthday','$phoneNumber','$passwordHash','$code','$status')";
+      // $result = mysqli_query($conn, $sql);
       // echo var_dump($result);
+      $data_check = mysqli_query($conn, $sql);
+      if($data_check){
+          $subject = "Email Verification Code";
+          $message = "Your verification code is $code
+           If this wasn't you ignore this message.";
+          $sender = "From: covisurance@gmail.com";
+          if(mail($email, $subject, $message, $sender)){
+            $otpmssg="We've sent a verification code to - $email" ;
+            $otperror="class='error-2'";
+            $otpdisplay="block";
+            $otpsuccess= "
+            <p $otperror style='display: $otpdisplay;'>$otpmssg</p>";
+            $info = "We've sent a verification code to your email -$email";
+            $_SESSION['info'] = $info;
+            $_SESSION['email'] = $email;
+              header('location: ../authentication/user-otp.php');
+              exit();
+          }else{
+                $otpmssg="Otp not Sent!" ;
+                $otperror="class='error-2'";
+                $otpdisplay="block";
+                $otpnotsuccess= "
+                <p $otperror style='display: $otpdisplay;'>$otpmssg</p>";
 
-      echo "
-      <script>
-      setInterval(() => {
-        window.location = '../index.php';
-      }, 3000);
-      </script>
-      ";
-      $signUpMssg = "You have Signed up Successfully,redirecting to you homepage.";
-      $signUpError = "class = 'error-2'";
-      $signUpDisplay = "block";
-
-
-      $Mssgsuccess= "
-         <p $signUpError style='display: $signUpDisplay;'>$signUpMssg</p>";
-
+          }
+        }  
+      }
+      
     }
   }
+  if(!empty($_GET['email'])){
+  $email=$_GET['email'];
+  $check_code = "SELECT * FROM `alluser` WHERE `email`= '$email'  and `code`=0";
+  $code_res = mysqli_query($conn, $check_code);
+  if(mysqli_num_rows($code_res)===1){
+    $signUpMssg = "Your Email is verified Sign-up Success,redirecting to you homepage.";
+    $signUpError = "class = 'error-2'";
+    $signUpDisplay = "block";
+  session_destroy();
+  echo "
+  <script>
+  setInterval(() => {
+    window.location = '../index.php';
+  }, 3200);
+  </script>
+  ";
 }
+ }
+
+  $Mssgsuccess= "
+     <p $signUpError style='display: $signUpDisplay;'>$signUpMssg</p>";
+  
 
 
-
-
+    
   echo "<div class='container'>";
       echo $Mssgsuccess;
-      ?>
+      echo $otpsuccess;
+      echo $otpnotsuccess;
+  ?>
     <div class="nav-sign-up links">
+      
       <img src="../static//img/logo.png" class="logo-img logo" alt="">
       <a href="../index.php">Home</a>
     </div>

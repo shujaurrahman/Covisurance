@@ -11,6 +11,63 @@
 
   ?>
   <link rel="stylesheet" href="./static/css/style.css" />
+  <style>
+    @media (max-width: 1280px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .header-content {
+    margin-top: 1rem;
+  }
+
+  .header-title {
+    font-size: 2.3rem;
+  }
+
+  .header-content .image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  header .column-1 {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .links{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateX(100%);
+    transition: 0.5s;
+  }
+
+  .links ul {
+    flex-direction: row;
+  }
+
+  .links a {
+    color: var(--light-one);
+  }
+
+  .links a.active {
+    margin-left: 0;
+    margin: 0.5rem 0;
+  }
+
+  .header-content .container.grid-2 {
+    min-height: 80vh;
+  }}
+  </style>
   <link rel="stylesheet" href="./static/css/modal.css" />
 </head>
 
@@ -81,6 +138,8 @@
           $data='';
            $data = mysqli_fetch_object($result);
           $passwordInDatabase = $data->{'password'};
+          $status=$data->{'status'};
+          $email=$data->{'email'};
           if (password_verify($password,$passwordInDatabase)) {
             $boolWrongPassword = false;
           }
@@ -89,15 +148,30 @@
 
             // session_start();
           }
-          echo $boolWrongPassword;
+          // echo $boolWrongPassword;
           if (!$boolWrongPassword) {
+            if($status=='verified'){
             $_SESSION["username"] = $username;
             $website = "/new";
             header("Location: $website/user profile/profile.php");
             $loginMssg = "Logged in Successfully";
             $loginError = "class = 'error'";
             $loginDisplay = "block";
-
+            }
+            else{
+              $userMssg = "Looks like your email isn't verified Verify Now";
+              $userError = "class = 'error'";
+              $userDisplay = "block";
+              $_SESSION["email"] = $email;
+              echo "
+              <script>
+              setInterval(() => {
+                window.location = './authentication/user-otp.php';
+              }, 2200);
+              </script>
+              ";
+              // header("Location: ./authentication/user-otp.php");
+            }
         
           }
         }
@@ -109,7 +183,7 @@
           $userError = "class = 'error'";
           $userDisplay = "block";
         }
-         else {
+         elseif($boolWrongPassword) {
           $passwordMssg = "Wrong Password";
           $passwordError = "class = 'error'";
           $passwordDisplay = "block";
@@ -163,8 +237,8 @@
       </div>
 
       <input type='submit' value='Sign In' class='sign-btn' />
-      <p class='text-l'> Forgotten your password or you login datails? 
-      <a href='#'>Get help</a> signing in 
+      <p class='text-l' style='font-size:17px'> Forgotten your password ? 
+      <a href='./authentication/forgot-password.php'>Click here</a>
       </p>
       </div></form></div><div class='carousel'>
       <div class='images-wrapper'><img src='./static/img/carasoul/img-5.svg' class='image-modal img-1 show' alt='' />

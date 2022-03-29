@@ -860,9 +860,9 @@ nav.open .links {
     max-width: 500px;
   }
 
-  nav .container {
+  /* nav .container {
     height: 4.5rem;
-  }
+  } */
 
   .header-content .container.grid-2 {
     min-height: calc(100vh - 4.5rem);
@@ -1131,7 +1131,7 @@ nav.open .links {
     margin-left: 0;
     margin-top: 1rem;
   }
-
+/* 
   .hamburger-menu {
     display: flex;
   }
@@ -1185,7 +1185,7 @@ nav.open .links {
 
   .header-content .container.grid-2 {
     min-height: 80vh;
-  }
+  } */
 
   .letters,
   header .half-circle2,
