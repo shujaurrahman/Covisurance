@@ -40,7 +40,7 @@ else{
 
 
 
-$website = "/new";
+// $website = "";
 // Variable for linking flies urls ============================================
 $signUp = "$website/sign up/signup.php";
 $profile = "$website/user profile/profile.php";

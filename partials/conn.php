@@ -1,10 +1,12 @@
 <?php
+
+// Server Settings
 // $serverName="sql300.epizy.com";
 // $userName="epiz_31372783";
-// $passWord="J8UGAwDdtSIbiA";
+// $passWord="";
 // $dataBase="epiz_31372783_covisurance";
 // $tableName="alluser";
-
+$website = "/covisurance";
 
 $serverName="localhost";
 $userName="root";

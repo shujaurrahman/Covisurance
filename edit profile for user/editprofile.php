@@ -1,6 +1,6 @@
 <?php
 require "../partials/conn.php";
-$website = "/new";
+// $website = "";
 $Msgdisplay = "Update your personal Details,Email should be unique..";
 $cancelButton = "$website/user profile/profile.php";
 $updateButton = "$website/my profile/myprofile.php";

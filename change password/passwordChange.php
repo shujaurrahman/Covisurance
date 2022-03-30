@@ -29,7 +29,7 @@ if (isset($_SESSION) and isset($_SESSION['username'])) {
 }
 
 form {
-	width: 60%;
+	width: 35%;
 	border: 2px solid #ccc;
 	padding: 30px;
 	background: var(--light-three);

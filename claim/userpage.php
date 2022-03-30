@@ -345,7 +345,7 @@ echo $print;
 // I HAVE USED AS DEFIEND on mpdf library avaiable on github/mpdf 
 use Mpdf\Mpdf;
 require_once __DIR__ .'/vendor/autoload.php';
-$mpdf->new \mPDF();
+$mpdf->new mPDF();
 $mpdf->WriteHTML('<h1>Hi</h1>');
 $mpdf->Output('myfile.pdf','D');
 

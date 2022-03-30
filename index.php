@@ -152,7 +152,7 @@
           if (!$boolWrongPassword) {
             if($status=='verified'){
             $_SESSION["username"] = $username;
-            $website = "/new";
+            // $website = "";
             header("Location: $website/user profile/profile.php");
             $loginMssg = "Logged in Successfully";
             $loginError = "class = 'error'";

@@ -60,14 +60,7 @@ require "../partials/conn.php";
 
   <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
-
-require '../PHPMailer/Exception.php';
-require '../PHPMailer/PHPMailer.php';
-require '../PHPMailer/SMTP.php';
 
 session_start();
 if (isset($_SESSION) and isset($_SESSION['username'])) {
@@ -262,54 +255,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $msgend= "If this wasn't you ignore this message.";
         $subject = "Email Verification Code";
 
-              //Create an instance; passing `true` enables exceptions
-              $m = new PHPMailer(true);
-   
-              try {
-                  //Server settings
-                  // $m->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                  $m->isSMTP();                                            //Send using SMTP
-                  $m->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                  $m->SMTPAuth   = true;    
-                  $m->SMTPSecure = 'tls';// Enable TLS encryption, `ssl` also accepted                               //Enable SMTP authentication
-                  $m->Username   = 'covisurance@gmail.com';                     //SMTP username
-                  $m->Password   = 'shuja@123';                               //SMTP password
-               //    $m->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                  $m->Port = '587';   
-                  // $m->SMTPDebug = 2;   
-                  $m->SMTPOptions = array(
-                   'ssl' => array(
-                       'verify_peer' => false,
-                       'verify_peer_name' => false,
-                       'allow_self_signed' => true
-                   )
-               );                              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-   
-                  //Recipients
-                  $m->setFrom('covisurance@gmail.com', 'Covisurance');
-                  $m->addAddress($email,$firstName);     //Add a recipient
-                  $m->addAddress($email);               //Name is optional
-                  // $m->addReplyTo('info@example.com', '');
-               //    $m->addCC('cc@example.com');
-               //    $m->addBCC('bcc@example.com');
-   
-                  //Attachments
-               //    $m->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-               //    $m->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-   
-                  //Content
-                  $m->isHTML(true);                                  //Set email format to HTML
-                  $m->Subject = $subject;
-                  $m->Body    = $msg .' <b>'.$code.'</b><br><br>'.$msgend;
-                  $m->AltBody = 'Code Not Generated. Some error Occured';
-   
-                  $m->send();
-                  // echo 'Message has been sent';
-              }
-              catch (Exception $e) {
-                  // echo "Message could not be sent. Mailer Error: {$m->ErrorInfo}";
-              }
-
+        // function for mail 
+              require "../partials/mail.php";
 
             $otpmssg="We've sent a verification code to - $email" ;
             $otperror="class='error-2'";
