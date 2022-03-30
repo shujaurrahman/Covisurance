@@ -1,4 +1,7 @@
 <?php
+
+use Mpdf\Mpdf;
+
 $boolAdminLoggedIn = false;
 session_start();
 if(isset($_SESSION) and isset($_SESSION["username"])){  
@@ -6,9 +9,9 @@ if(isset($_SESSION) and isset($_SESSION["username"])){
     $boolAdminLoggedIn = true;   
 }
 
-
 require "../partials/conn.php";
-  
+
+
 $id=$_GET['id'];
 $sql = "SELECT * FROM `appliedpolicy`  WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);
@@ -53,10 +56,12 @@ $dissapp="";
 
 
 
- 
- 
+
+
+
  
  ?>
+
 
 
 
@@ -189,7 +194,7 @@ img {
 </head>
 <?php
 
-echo "
+$print= "
 <body >
 <section style='display: $display;' class='section about-section gray-bg' id='about'>";
       $alertMssg = "Download Pdf of Application for future Reference.";
@@ -332,4 +337,17 @@ echo "
 
 </script>
 </body>
+<?php
+echo $print;
+
+
+//THIS CODE IS MAKING PROBLEM THE LIBRARY CLASS IS NOT IDENTIFIED IT SAYS BUT 
+// I HAVE USED AS DEFIEND on mpdf library avaiable on github/mpdf 
+use Mpdf\Mpdf;
+require_once __DIR__ .'/vendor/autoload.php';
+$mpdf->new \mPDF();
+$mpdf->WriteHTML('<h1>Hi</h1>');
+$mpdf->Output('myfile.pdf','D');
+
+?>
 </html>
