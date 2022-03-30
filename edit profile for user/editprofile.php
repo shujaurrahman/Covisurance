@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$firstName = $_POST['first_name'];
 	$lastName = $_POST['last_name'];
 	$phoneNumber = $_POST['phonenumber'];
-	$userEmail = $_POST['email'];
 	$birthday = $_POST['birthday'];
 	$pancard = $_POST['pancard'];
 	$annualIncome = $_POST['annual_income'];
@@ -87,20 +86,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           ///condition that actually executes updation 
 
 	else{
-	$sql = "UPDATE `alluser` SET first_name='$firstName',last_name='$lastName',
-	email='$userEmail',birthday='$birthday',phonenumber='$phoneNumber',pancard='$pancard',annual_income='$annualIncome',_address='$adress',
+	$sql = "UPDATE `alluser` SET first_name='$firstName',last_name='$lastName',birthday='$birthday',phonenumber='$phoneNumber',pancard='$pancard',annual_income='$annualIncome',_address='$adress',
 	city='$city',country='$country',_image='$newImgName' WHERE username ='$currentUser'";
 	$result = mysqli_query($conn, $sql);
 	if($result){
 
-		//old
-		// move_uploaded_file($_FILES['userImage']['tmp_name'],$path.$currentUser.basename($_FILES["userImage"]["name"]));
-
-		//when cond. fullfilled deletes old image
-		unlink($path.$Dimage);
+		if(!empty($Dimage)){
+		unlink($path.$Dimage);}
         
-
-
 		//This code updates new picture with username appended at begning 
 		//so that imag is unique for every user and diff user can update same image
 		move_uploaded_file($tmpName,$path.$newImgName);
@@ -175,20 +168,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			padding: 0.50rem 1rem !important;
 		}
 
-		/* label{
-			height: 59px;
-			width: 210px;
-			background-color: #00ADB5;
-			color: white;
-			position: absolute;
-			left: 10px;
-			padding: 15px 25px;
-			align-items: center;
-			justify-content: center;
-			margin-left: 1.5rem;
-			font-size: 20px;
-			display: flex;
-		} */
 	</style>
 </head>
 
@@ -261,7 +240,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
 				<div class='form-group'>
 					<label  for='website'>Email</label>
-					<input name='email' type='email' class='form-control' id='website' required value='$DuserEmail'>
+					<input name='email' type='email' class='form-control' id='website' required value='$DuserEmail' readonly>
 				</div>
 			</div>
 			<div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
