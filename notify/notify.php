@@ -39,8 +39,9 @@ $profile_pic="";
 $signed_in="";
 $email_verified="";
 $account="";
+$update_info="";
 $caughtup="";
-
+$backbutton="";
 
 $sql= "SELECT * FROM `notify` WHERE `username`='$currentUser'";
 $result=mysqli_query($conn,$sql);
@@ -53,9 +54,10 @@ if($aff>0){
   or $data->{'approved'}==1 or $data->{'disapproved'}==1 or $data->{'download_pdf'}==1 or $data->{'question'}==1
   or $data->{'payment_success'}==1) {
   $button="<button type='submit' class='btn btn-warning' onClick='clearNotification($id)'>Clear All</button>";
+  $backbutton="<a href='../user profile/profile.php'><button type='submit' class='btn btn-warning back' > Go Back</button></a>";
 }
 else{
-  
+
   $button="<a href='../user profile/profile.php'><button type='submit' class='btn btn-warning' > Go Back</button></a>";
   $caughtup='<h4><strong> No New Notifications!!</strong> You are all caught up.</h4>';
   }
@@ -248,20 +250,20 @@ else{
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
           <h1>  <?php
-            echo "Notifications $button</h1>
+            echo "Notifications $backbutton $button </h1>
              
             $caughtup
             $logout
-            $payment_success
-            $question
-            $download_pdf
-            $policy_app
-            $disapproved
-            $approved
-            $payment_success
-            $passWord_reset
-            $admin_review
             $profile_pic
+            $update_info
+            $policy_app
+            $payment_success
+            $download_pdf
+            $admin_review
+            $approved
+            $disapproved
+            $question
+            $passWord_reset
             $signed_in
             $email_verified
             $account
@@ -283,6 +285,10 @@ button{
   margin: 0 0 1% 0 !important;
   background-color: var(--main-color) !important;
   border-color: var(--main-color) !important;
+}
+
+.back{
+  right:17%;
 }
 button:hover{
   background-color: var(--light-one) !important;
