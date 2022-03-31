@@ -47,7 +47,7 @@ $id=$data->{"id"};
 // $profilepic="<img src='../userimages/$image' alt='Image Not uploaded'>";
 // }
 
-$viewButton="<button type='button' class='btn btn-outline-info mx-2 my-2' onclick=window.location.href='./userpage.php?id=$id'>View</button>";
+$viewButton="<button type='button' class='btn btn-outline-info mx-2 my-2' onclick=window.location.href='./userpage.php?id=$id&username=$userName'>View</button>";
 $deleteButton="<button type='button' class='btn btn-outline-danger mx-2 my-2' onClick='appDel($id)'>Delete</button>";
 
 

@@ -154,6 +154,8 @@
             $_SESSION["username"] = $username;
             // $website = "";
             header("Location: $website/user profile/profile.php");
+            $sql2="UPDATE `notify` SET `signed_in`= '1' WHERE `username`='$username'";
+            $result2=mysqli_query($conn,$sql2);
             $loginMssg = "Logged in Successfully";
             $loginError = "class = 'error'";
             $loginDisplay = "block";

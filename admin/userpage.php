@@ -9,8 +9,6 @@ if(isset($_SESSION) and isset($_SESSION["adminusername"])){
 
 
 
-
-
 $result2="";
 if(isset($_GET) and isset($_GET['appPol'])){
   $id= $_GET['appPol'];
@@ -54,8 +52,14 @@ if(isset($_GET) and isset($_GET['appPol'])){
 if(!$result2){
   
 $id=$_GET['id'];
+$userName=$_GET['username'];
+
 $sql = "SELECT * FROM `appliedpolicy`  WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);
+if($result){
+  $sql2="UPDATE `notify` SET `admin_review`= '1' WHERE `username`='$userName'";
+  $result2=mysqli_query($conn,$sql2);
+}
 $data = mysqli_fetch_object($result);
 $first_name=$data->{"first_name"};
 $last_name=$data->{"last_name"};
@@ -96,6 +100,9 @@ $appheading="Reviewing Application Details of User";
 
 }
 elseif($action==2){
+    $userName=$_GET['username'];
+    $sql2="UPDATE `notify` SET `approved`= '1' WHERE `username`='$userName'";
+    $result2=mysqli_query($conn,$sql2);
   $alertMssg = "The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been Approved by you.";
   $alertError = "class = 'error'";
   $alertDisplay = "block";
@@ -103,6 +110,9 @@ elseif($action==2){
   $appheading="Application Approved";
 }                       
 elseif($action==3){
+  $userName=$_GET['username'];
+  $sql2="UPDATE `notify` SET `disapproved`= '1' WHERE `username`='$userName'";
+  $result2=mysqli_query($conn,$sql2);
   $alertMssg = "The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been disapproved by you.";
   $alertError = "class = 'error'";
   $alertDisplay = "block";

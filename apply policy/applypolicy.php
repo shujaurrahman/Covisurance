@@ -7,7 +7,7 @@ if (isset($_SESSION) and isset($_SESSION['username'])) {
 	$currentUser = $_SESSION['username'];
 	$boolLoggedIn = true;
 } else {
-	//   header("Location: ../index.php");
+	  header("Location: ../index.php");
 }
 
 
@@ -28,10 +28,6 @@ if ($boolLoggedIn) {
 	$Dpancard = $data->{"pancard"};
 	$Dbirthday = $data->{"birthday"};
 }
-
-
-// if($conn==True){
-//   echo"Connection is established"; }
 
 
 
@@ -57,19 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $p_coverage=$_POST["p_coverage"];
    $pancard=$_POST["pancard"];
    $phone=$_POST["phone"];
-//    $panImage = $_POST["pan_image"];
-//    $aadharImage = $_POST["aadhar_image"];
-//    $medicalImage = $_POST["medical_image"];
-//    $passImage= $_POST["pass_image"];
 
-
-
-//path to which image is uploaded
-// $imgExplode = explode('.',$image); //appension of username to image
-// $dirr='/';
-
-
-// $userf=$path.$currentUser;
 
 $pan = $_FILES["pan_image"]["name"]; //img name
 $tmpName1 = $_FILES["pan_image"]["tmp_name"]; //temp server
@@ -102,22 +86,14 @@ $newpass = $currentUser.$pass; //new image src
    move_uploaded_file($tmpName2,$path.$currentUser.$p_name.'/'.$newaadhar);
    move_uploaded_file($tmpName3,$path.$currentUser.$p_name.'/'.$newmedical);
    move_uploaded_file($tmpName4,$path.$currentUser.$p_name.'/'.$newpass);
+   $sql2="UPDATE `notify` SET `policy_app`= '1' WHERE `username`='$currentUser'";
+   $result2=mysqli_query($conn,$sql2);
+
    }
    else{
        echo "Doc Images doesn't got stored in our database,contact admin ";
    }
 
-
-
-
-
-
-
-
-
-
-
-   echo var_dump($result);
 }
 
 
@@ -198,16 +174,7 @@ $newpass = $currentUser.$pass; //new image src
 <!-- =======================================NAV BAR OF WEBSITE================================-->
 
                               <?php
-            
-                              
-                            
                             require "../partials/nav.php";
-                            // Getting policy which customer clicked from previous page through Get method 
-                                // $id= $_GET['id'];
-                                // $policycat= $_GET['category'];
-                                // $policyName= $_GET['policyName'];
-                                // $policyPremium= $_GET['premium'];
-                                // $policyCoverage= $_GET['coverage'];
                                 $alerMssg = "";
                                 $alertError = "";
                                 $alertDisplay = "none";
@@ -215,6 +182,10 @@ $newpass = $currentUser.$pass; //new image src
                                 $alertMssg = "Note Down Your Unique Insurance Number: &nbsp $uniqeCustomerId &nbsp This will be needed when you
                                 will claim policy,You can also see Unique Insurane Id in my policies";
                                 $paymentMssg="A payment page will pop up Now pay your premium fee to start the policy process.";
+                                if($paymentMssg){
+                                    $sql2="UPDATE `notify` SET `payment_success`= '1' WHERE `username`='$currentUser'";
+                                    $result2=mysqli_query($conn,$sql2);
+                                }
                                 $alertError = "class = 'error'";
                                 $alertDisplay = "block";
                                 echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";

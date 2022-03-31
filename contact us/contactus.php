@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql="INSERT INTO `contactus`(`username`, `name`, `email`, `subject`, `message`) VALUES ('$currentUser','$name','$email','$subject','$message')";
                 $result = mysqli_query($conn,$sql);
                 if($result){
+                  $sql2="UPDATE `notify` SET `question`= '1' WHERE `username`='$currentUser'";
+                    $result2=mysqli_query($conn,$sql2);
                   echo "
                   <script>
                   setInterval(() => {

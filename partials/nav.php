@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbaar+Codes for different pages based on condition</title>
+    <script src="https://kit.fontawesome.com/06edf57802.js" crossorigin="anonymous"></script>
+       <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="fonts/icomoon/style.css">
+       
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
 </head>
 <body>
 <?php
+
 
 
 
@@ -50,9 +56,18 @@ $claim= "$website/claim/claim.php";
 $homePage = "$website/index.php";
 $userProfile="$website/user profile/profile.php";
 $testimonial="$website/testimonial/testimonial.php";
+$notification="$website/notify/notify.php";
 
 
 
+
+
+//Notification 
+$sql="SELECT SUM(COALESCE(account_created,0)+(COALESCE(email_verified,0))+(COALESCE(signed_in,0))+(COALESCE(password_reset,0))+(COALESCE(update_info,0))+(COALESCE(profile_pic,0))+(COALESCE(policy_app,0))+(COALESCE(policy_claimed,0))+(COALESCE(admin_review,0))+(COALESCE(approved,0))+
+(COALESCE(`disapproved`,0))+(COALESCE(`download_pdf`,0))+(COALESCE(`question`,0))+(COALESCE(`logout`,0))+(COALESCE(`payment_success`,0))) AS sum_value FROM `notify` WHERE `username`='$currentUser';";
+$result=mysqli_query($conn,$sql);
+$aff=mysqli_fetch_assoc($result);
+$sum = $aff['sum_value'];
 
 
 // Discrete block that changes for different blocks 
@@ -67,6 +82,11 @@ $claimBlock="<a href='$claim'>Claim</a>";
 $testimonialBlock="<a href='$testimonial'>Post Testimonial</a>";
 $signUpBlock="<a href='$signUp' class='btn'>Get Started</a>";
 $contactUsBlock = "  <a href='$contactUs'>Contact us</a>";
+$notifyBlock="
+<a href='$notification?username=$currentUser'><i class='fas fa-solid fa-envelope fa-2x'></i><span class='badge badge-danger' style='background-color:red !important;  border-radius:50%; padding:0 6px;
+position:relative; top:-20px; left:-17px; color: white;'>$sum</span></a>
+";
+
 
 
 
@@ -104,7 +124,7 @@ if ($fetch) {
         $newDate = date("j-F Y", strtotime($date));
         $newTime = date("l, g:i a", strtotime($date));
 
-        // echo $policyName;
+     
 
         
         // polcies image are randomly inserted for every card that while loop fetches from database
@@ -439,6 +459,7 @@ if ($boolLoggedIn) {
         $testimonialBlock
         $contactUsBlock
         $profileBlock
+        $notifyBlock
       </div>
       <div class='hamburger-menu'>
         <div class='bar'></div>
@@ -458,7 +479,6 @@ else{
         $claimBlock
         $testimonialBlock
         $contactUsBlock
-
         $signInBlock
       </div>
       <div class='hamburger-menu'>

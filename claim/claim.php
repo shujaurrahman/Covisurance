@@ -84,21 +84,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         {
         $sql2="UPDATE `appliedpolicy` SET  `action` = '1' WHERE `unique_id`='$inputId'";
         $result2 = mysqli_query($conn, $sql2);
-        $alertMssg = "You have Successfully claimed the $policy policy, It is in pending state Once admin approves the amount Will
-        be processed to your account.";
-
-        $sql="SELECT * FROM  `appliedpolicy` WHERE `username`='$currentUser' and `unique_id`='$inputId'";
-        $result = mysqli_query($conn, $sql);
-        $data = mysqli_fetch_object($result);
-        $id=$data->{"id"};
-
-        echo "
-        <script>
-        setInterval(() => {
-          window.location = './userpage.php?id=$id';
-        }, 3000);
-        </script>
-        ";
+        if($result){
+            $sql2="UPDATE `notify` SET `policy_claimed`= '1' WHERE `username`='$currentUser'";
+            $result2=mysqli_query($conn,$sql2);
+            $alertMssg = "You have Successfully claimed the $policy policy, It is in pending state Once admin approves the amount Will
+            be processed to your account.";
+            
+            $sql="SELECT * FROM  `appliedpolicy` WHERE `username`='$currentUser' and `unique_id`='$inputId'";
+            $result = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_object($result);
+            $id=$data->{"id"};
+            
+            echo "
+            <script>
+            setInterval(() => {
+                window.location = './userpage.php?id=$id';
+            }, 3000);
+            </script>
+            ";
+        }
         }
 
         

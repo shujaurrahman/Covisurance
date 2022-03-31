@@ -1,12 +1,15 @@
 <?php
 
-use Mpdf\Mpdf;
+// use Mpdf\Mpdf;
 
-$boolAdminLoggedIn = false;
+$boolLoggedIn = false;
 session_start();
 if(isset($_SESSION) and isset($_SESSION["username"])){  
 	$currentName=$_SESSION["username"];
-    $boolAdminLoggedIn = true;   
+    $boolLoggedIn = true;   
+}
+else{
+  header("Location ../index.php");
 }
 
 require "../partials/conn.php";
@@ -326,6 +329,10 @@ $print= "
                     
                 $DownloadButton="<button type='button' class='btn btn-success mx-2 my-2' onclick='myDownload()'>Print Application</button>";
                   echo $DownloadButton;
+                  if($DownloadButton){
+                    $sql2="UPDATE `notify` SET `download_pdf`= '1' WHERE `username`='$currentName'";
+                    $result2=mysqli_query($conn,$sql2);
+                  }
                         ?>
                    
         </section>
@@ -343,11 +350,11 @@ echo $print;
 
 //THIS CODE IS MAKING PROBLEM THE LIBRARY CLASS IS NOT IDENTIFIED IT SAYS BUT 
 // I HAVE USED AS DEFIEND on mpdf library avaiable on github/mpdf 
-use Mpdf\Mpdf;
-require_once __DIR__ .'/vendor/autoload.php';
-$mpdf->new mPDF();
-$mpdf->WriteHTML('<h1>Hi</h1>');
-$mpdf->Output('myfile.pdf','D');
+// use Mpdf\Mpdf;
+// require_once __DIR__ .'/vendor/autoload.php';
+// $mpdf->new mPDF();
+// $mpdf->WriteHTML('<h1>Hi</h1>');
+// $mpdf->Output('myfile.pdf','D');
 
 ?>
 </html>

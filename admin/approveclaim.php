@@ -46,7 +46,7 @@ $id=$data->{"id"};
 // }
 
 
-$viewButton="<button type='button' class='btn btn-outline-info mx-2 my-2' onclick=window.location.href='./userpage.php?id=$id'>View details</button>";
+$viewButton="<button type='button' class='btn btn-outline-info mx-2 my-2' onclick=window.location.href='./userpage.php?id=$id&username=$userName'>View details</button>";
 
 
 $row.=  "

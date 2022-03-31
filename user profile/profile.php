@@ -1,10 +1,15 @@
 <?php
+$boolLoggedIn=false;
 require "../partials/conn.php";
+session_start();
 if (isset($_SESSION) and isset($_SESSION['username'])) {
     $boolLoggedIn = true;
     $currentUser = $_SESSION['username'];
 }
-$logout = "../logout/logout.php";
+else{
+    header("location ../index.php");
+}
+$logout = "../logout/logout.php?username=$currentUser";
 ?>
 
 

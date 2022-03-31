@@ -90,9 +90,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	city='$city',country='$country',_image='$newImgName' WHERE username ='$currentUser'";
 	$result = mysqli_query($conn, $sql);
 	if($result){
-
+		$sql2="UPDATE `notify` SET `update_info`= '1' WHERE `username`='$currentUser'";
+		$result2=mysqli_query($conn,$sql2);
 		if(!empty($Dimage)){
-		unlink($path.$Dimage);}
+		unlink($path.$Dimage);
+	}
+	else{
+		$sql2="UPDATE `notify` SET `profile_pic`= '1' WHERE `username`='$currentUser'";
+		$result2=mysqli_query($conn,$sql2);
+	}
         
 		//This code updates new picture with username appended at begning 
 		//so that imag is unique for every user and diff user can update same image

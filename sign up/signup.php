@@ -134,6 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $phoneNumber = $_POST["phonenumber"];
   $password = $_POST["password"];
   $confirmPassword = $_POST["confirmPassword"];
+  
 
   $sql = "SELECT * FROM `alluser` WHERE `username` = '$username'";
   $result = mysqli_query($conn, $sql);
@@ -249,9 +250,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // echo var_dump($result);
       $data_check = mysqli_query($conn, $sql);
       if($data_check){
-     
-        $msg="Your verification code is ";
-                              
+          $sql2="INSERT INTO `notify`(`username`,`email`,`account_created`) VALUES ('$username','$email','1')";
+          $result2=mysqli_query($conn,$sql2);
+
+        $msg="Your verification code is ";                      
         $msgend= "If this wasn't you ignore this message.";
         $subject = "Email Verification Code";
 
@@ -266,7 +268,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $info = "We've sent a verification code to your email -$email";
             $_SESSION['info'] = $info;
             $_SESSION['email'] = $email;
-              header('location: ../authentication/user-otp.php');
+              header("location: ../authentication/user-otp.php");
               exit();
           }else{
                 $otpmssg="Otp not Sent!" ;
@@ -285,6 +287,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email=$_GET['email'];
   $check_code = "SELECT * FROM `alluser` WHERE `email`= '$email'  and `code`=0";
   $code_res = mysqli_query($conn, $check_code);
+  $code = "SELECT * FROM `notify` WHERE `email` = '$email'";
+    $res = mysqli_query($conn, $code);
+    $aff = mysqli_affected_rows($conn);
+    if($aff===1){
+                $sql2="UPDATE `notify` SET `email_verified`= '1'";
+                $result2=mysqli_query($conn,$sql2);}
+    else{
+        
+    }
   if(mysqli_num_rows($code_res)===1){
     $signUpMssg = "Your Email is verified Sign-up Success,redirecting to you homepage.";
     $signUpError = "class = 'error-2'";

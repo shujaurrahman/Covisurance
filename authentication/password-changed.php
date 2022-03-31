@@ -26,7 +26,10 @@ if(isset($_POST['login-now'])){
             if(isset($_SESSION['info'])){
                 ?>
                 <div class="alert alert-success text-center">
-                <?php echo $_SESSION['info']; ?>
+                <?php echo $_SESSION['info']; 
+                $sql2="UPDATE `notify` SET `password_reset`= '1' WHERE `email`='$email'";
+                $result2=mysqli_query($conn,$sql2);
+                ?>
                 </div>
                 <?php
             }
