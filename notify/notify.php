@@ -8,6 +8,23 @@ if (isset($_SESSION) and isset($_SESSION['username'])) {
 else{
     header("location ../index.php");
 }
+
+$result2="";
+if(isset($_GET) and isset($_GET['clear'])){
+  $id= $_GET['clear'];
+      $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null  WHERE `id`=$id";
+      $result2 = mysqli_query($conn,$sql);
+      // echo var_dump($result2);
+      // if($result2){
+      //   echo "
+      //   <script>
+      //   setInterval(() => {
+      //     window.location = './approvedapp.php';
+      //   }, 4000);
+      //   </script>
+      //   ";}
+        
+      }
 $logout="";
 $payment_success="";
 $question="";
@@ -22,11 +39,29 @@ $profile_pic="";
 $signed_in="";
 $email_verified="";
 $account="";
+$caughtup="";
+
+
 $sql= "SELECT * FROM `notify` WHERE `username`='$currentUser'";
 $result=mysqli_query($conn,$sql);
 $aff=mysqli_affected_rows($conn);
 if($aff>0){
   $data=mysqli_fetch_object($result);
+  $id=$data->{"id"}; 
+  if($data->{'signed_in'}==1 or $data->{'logout'}==1 or $data->{'email_verified'}==1 or $data->{'password_reset'}==1
+  or $data->{'update_info'}==1 or $data->{'profile_pic'}==1 or $data->{'policy_app'}==1 or $data->{'policy_claimed'}==1 or $data->{'admin_review'}==1
+  or $data->{'approved'}==1 or $data->{'disapproved'}==1 or $data->{'download_pdf'}==1 or $data->{'question'}==1
+  or $data->{'payment_success'}==1) {
+  $button="<button type='submit' class='btn btn-warning' onClick='clearNotification($id)'>Clear All</button>";
+}
+else{
+  
+  $button="<a href='../user profile/profile.php'><button type='submit' class='btn btn-warning' > Go Back</button></a>";
+  $caughtup='<h4><strong> No New Notifications!!</strong> You are all caught up.</h4>';
+  }
+  $date=$data->{"date"};
+    $newDate = date("j-F Y", strtotime($date));
+    $newTime = date("l, g:i a", strtotime($date));
   if($data->{'account_created'}==1){
           $account="<div class='alert alert-success alert-white rounded'
           <button type='button' data-dismiss='alert' aria-hidden='true' class='close'></button>
@@ -34,7 +69,7 @@ if($aff>0){
               <i class='fa fa-solid fa-user-plus'></i>
           </div>
           <strong>Yahoo... Account Created!</strong> 
-          You created account Successfully.
+          You created account Successfully <small>$newDate at $newTime</small>
            </div>"
            ;
           }
@@ -45,7 +80,7 @@ if($aff>0){
                          <i class='fa fa-solid fa-envelope'></i>
                         </div>
                         <strong>Email Verified!</strong> 
-                        Your Email was verfied at
+                        Your Email was verfied at <small>$newDate at $newTime</small>
                         </div>"
                         ;
                       }
@@ -56,7 +91,7 @@ if($aff>0){
                         <i class='fas fa-solid fa-user-check'></i>
                         </div>
                         <strong>Sign in!</strong> 
-                        You Signed in successfully at 
+                        You Signed in successfully. <small>$newDate at $newTime</small> 
                         </div>"
                         ;
                       }
@@ -67,7 +102,7 @@ if($aff>0){
     <i class='fa fa-solid fa-lock'></i>
     </div>
     <strong>Password Reset!</strong> 
-    Your password Was reset,    </div>"
+    Your password Was reset.    </div>"
     ;
   }
   if($data->{'update_info'}==1){
@@ -132,7 +167,7 @@ if($aff>0){
     <i class='fa fa-solid fa-thumbs-up'></i>
     </div>
     <strong>Policy Approved!</strong> 
-     Your Policy was approved by the admin.
+     Your Policy was approved by the admin. <small>$newDate at $newTime</small>
     </div>"
     ;
   }
@@ -143,7 +178,7 @@ if($aff>0){
     <i class='fa fa-solid fa-thumbs-down'></i>
     </div>
     <strong>Policy Disapproved!</strong> 
-    Your Policy was disapproved by the admin.
+    Your Policy was disapproved by the admin. <small>$newDate at $newTime</small>
     </div>"
     ;
   }
@@ -165,7 +200,7 @@ if($aff>0){
     <i class='fa fa-regular fa-comment'></i>
     </div>
     <strong>Messaged Admin!</strong> 
-    You Sent admin a Querry through Contact us Section.
+    You Sent admin a Querry through Contact us Section. <small>$newDate at $newTime</small>
     </div>"
     ;
   }
@@ -176,7 +211,7 @@ if($aff>0){
     <i class='fa fa-solid fa-sign-out'></i>
     </div>
     <strong>Logged out!</strong> 
-    You logged out Successfully at 
+    You logged out Successfully.<small>$newDate at $newTime</small>
     </div>"
     ;
   }
@@ -187,7 +222,7 @@ if($aff>0){
     <i class='fa fa-regular fa-credit-card'></i>
     </div>
     <strong>Payment Success!</strong> 
-    Your Payment for your policy was Succesfull.
+    Your Payment for your policy was Succesfull. <small>$newDate at $newTime</small>
     </div>"
     ;
   }
@@ -208,12 +243,14 @@ if($aff>0){
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
-          <h1>Notifications</h1>
-          <?php
-            echo "
+          <h1>  <?php
+            echo "Notifications $button</h1>
+             
+            $caughtup
             $logout
             $payment_success
             $question
@@ -227,7 +264,9 @@ if($aff>0){
             $profile_pic
             $signed_in
             $email_verified
-            $account";
+            $account
+            
+            ";
           ?> 
 
 <style type="text/css">
@@ -238,12 +277,37 @@ body{
   background-color: var(--light-three);
   
 }
-
+button{
+  position: absolute;
+  right: 11%;
+  margin: 0 0 1% 0 !important;
+  background-color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}
+button:hover{
+  background-color: var(--light-one) !important;
+  color: var(--dark-one) !important;
+}
 h1{
+  margin-bottom: 1%;
   text-align: center;
   padding: 10px;
   font-weight: 600;
   color: var(--main-color);
+}
+
+h4{
+  background-color: var(--main-color);
+  margin-top: 10%;
+  padding: 8px 10px;
+  width: 25%;
+  border-radius: 10px;
+  position: absolute;
+  left: 30%;
+}
+small{
+  position: absolute;
+  right: 10px;
 }
 .alert {
   border-radius: 0;
@@ -328,9 +392,7 @@ h1{
 
 
 </style>
-
-<script type="text/javascript">
-
-</script>
+<script src="../static/js/admin.js"></script>
 </body>
+
 </html>

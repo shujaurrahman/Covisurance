@@ -16,3 +16,6 @@ function dissPol(id){
 function myDownload(){
         window.print();
 }
+function clearNotification(id){
+      window.location =`?clear=${id}`;
+}
