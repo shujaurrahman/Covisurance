@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 31, 2022 at 09:58 AM
+-- Generation Time: Mar 30, 2022 at 10:54 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -72,7 +72,7 @@ CREATE TABLE `alluser` (
 --
 
 INSERT INTO `alluser` (`s_no`, `first_name`, `last_name`, `username`, `email`, `birthday`, `phonenumber`, `password`, `pancard`, `annual_income`, `_address`, `city`, `country`, `_image`, `date`, `code`, `status`) VALUES
-(42, 'Shuja', 'Rahman', 'shujaurrahman', 'Shujaurrehman210@gmail.com', '2022-03-18', '07579966178', '$2y$10$Yoi5/pVhXPijDMdjXdB3lumc..fQ2Yt.Wsm0nln7zIx77K4nauEgi', 'EIEPR3194G', '200000', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT', 'PILIBHIT', 'India', 'shujaurrahmans.jpg', '2022-03-31 07:10:09', 0, 'verified');
+(21, 'Shuja', 'Rahman', 'Adminshuja', 'Shujaurrehman210@gmail.com', '25/12/2012', '7579966178', '$2y$10$jNh5JUosM7whVhLAqE2qKOAzsC79qQTEcnqL1fL/BPN1uLHrzmezq', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-30 16:00:30', 0, 'verified');
 
 -- --------------------------------------------------------
 
@@ -106,14 +106,6 @@ CREATE TABLE `appliedpolicy` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `appliedpolicy`
---
-
-INSERT INTO `appliedpolicy` (`id`, `first_name`, `last_name`, `gender`, `f_name`, `m_name`, `dob`, `email`, `address`, `p_name`, `p_cat`, `p_premium`, `p_coverage`, `pancard`, `phone`, `pan_image`, `aadhar_image`, `medical_image`, `pass_image`, `unique_id`, `username`, `action`, `date`) VALUES
-(73, 'Shuja', 'Rahman', 'Male', 'ada', 'asda', '2022-03-18', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 XYZ', 'Diamond', 'asdsad', 'asdasd', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '480245429', 'shujaurrahman', 1, '2022-03-31 07:23:27'),
-(74, 'Shuja', 'Rahman', 'Male', 'zdvd', 'Parveen', '2022-03-18', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 G', 'Diamond', '7000', '800000', 'EIEPR3194G', '07579966178', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanPancard.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '563526919', 'shujaurrahman', 0, '2022-03-31 08:12:57');
-
 -- --------------------------------------------------------
 
 --
@@ -129,49 +121,6 @@ CREATE TABLE `contactus` (
   `message` varchar(300) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contactus`
---
-
-INSERT INTO `contactus` (`s_no`, `username`, `name`, `email`, `subject`, `message`, `date`) VALUES
-(49, 'shujaurrahman', 'Shuja Ur Rahman', 'Shujaurrehman210@gmail.com', 'aya msg', 'A hi gaya hga', '2022-03-31 07:58:39'),
-(50, 'shujaurrahman', 'Shuja Ur Rahman', 'Shujaurrehman210@gmail.com', 'aya msg', 'aa hi gaya hga', '2022-03-31 07:59:09');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notify`
---
-
-CREATE TABLE `notify` (
-  `id` int(255) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `account_created` int(255) DEFAULT NULL,
-  `email_verified` int(255) DEFAULT NULL,
-  `signed_in` int(255) DEFAULT NULL,
-  `password_reset` int(255) DEFAULT NULL,
-  `update_info` int(255) DEFAULT NULL,
-  `profile_pic` int(255) DEFAULT NULL,
-  `policy_app` int(255) DEFAULT NULL,
-  `policy_claimed` int(255) DEFAULT NULL,
-  `admin_review` int(255) DEFAULT NULL,
-  `approved` int(255) DEFAULT NULL,
-  `disapproved` int(255) DEFAULT NULL,
-  `download_pdf` int(255) DEFAULT NULL,
-  `question` int(255) DEFAULT NULL,
-  `logout` int(255) DEFAULT NULL,
-  `payment_success` int(255) DEFAULT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `notify`
---
-
-INSERT INTO `notify` (`id`, `username`, `email`, `account_created`, `email_verified`, `signed_in`, `password_reset`, `update_info`, `profile_pic`, `policy_app`, `policy_claimed`, `admin_review`, `approved`, `disapproved`, `download_pdf`, `question`, `logout`, `payment_success`, `date`) VALUES
-(28, 'shujaurrahman', 'Shujaurrehman210@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-31 13:53:34');
 
 -- --------------------------------------------------------
 
@@ -256,14 +205,6 @@ ALTER TABLE `contactus`
   ADD PRIMARY KEY (`s_no`);
 
 --
--- Indexes for table `notify`
---
-ALTER TABLE `notify`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
 -- Indexes for table `policycards`
 --
 ALTER TABLE `policycards`
@@ -289,25 +230,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `alluser`
 --
 ALTER TABLE `alluser`
-  MODIFY `s_no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `s_no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `appliedpolicy`
 --
 ALTER TABLE `appliedpolicy`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
---
--- AUTO_INCREMENT for table `notify`
---
-ALTER TABLE `notify`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `policycards`
