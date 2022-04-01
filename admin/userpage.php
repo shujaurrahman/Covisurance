@@ -1,152 +1,152 @@
 <?php
-require "../partials/conn.php";
+require '../partials/conn.php';
 $boolAdminLoggedIn = false;
 session_start();
-if(isset($_SESSION) and isset($_SESSION["adminusername"])){  
-	$currentName=$_SESSION["adminusername"];
+if(isset($_SESSION) and isset($_SESSION['adminusername'])){  
+	$currentName=$_SESSION['adminusername'];
     $boolAdminLoggedIn = true;   
 }
 
 
 
-$result2="";
+$result2='';
 if(isset($_GET) and isset($_GET['appPol'])){
   $id= $_GET['appPol'];
-      $sql = "UPDATE `appliedpolicy`  SET `action`=2 WHERE `id` = '$id';";
+      $sql = 'UPDATE `appliedpolicy`  SET `action`=2 WHERE `id` = '$id';';
       $result2 = mysqli_query($conn,$sql);
-      $alertMssg = "A Policy was approved by you, Action Cannot be Reveresed Now";
-      $alertError = "class = 'error'";
-      $alertDisplay = "block";
-      $display="none";
-      echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
+      $alertMssg = 'A Policy was approved by you, Action Cannot be Reveresed Now';
+      $alertError = 'class = 'error'';
+      $alertDisplay = 'block';
+      $display='none';
+      echo '<p $alertError style='display: $alertDisplay;'>$alertMssg</p>';
       if($result2){
-        echo "
+        echo '
         <script>
         setInterval(() => {
           window.location = './approvedapp.php';
         }, 4000);
         </script>
-        ";}
+        ';}
         
       }
       
       if(isset($_GET) and isset($_GET['dissPol'])){
         $id= $_GET['dissPol'];
-        $sql = "UPDATE `appliedpolicy`  SET `action`=3 WHERE `id` = '$id'";
+        $sql = 'UPDATE `appliedpolicy`  SET `action`=3 WHERE `id` = '$id'';
         $result2 = mysqli_query($conn,$sql);
-        $alertMssg = "A Policy was disapproved by you, Action Cannot be Reveresed Now";
-        $alertError = "class = 'error'";
-        $alertDisplay = "block";
-        $display="none";
-        echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
+        $alertMssg = 'A Policy was disapproved by you, Action Cannot be Reveresed Now';
+        $alertError = 'class = 'error'';
+        $alertDisplay = 'block';
+        $display='none';
+        echo '<p $alertError style='display: $alertDisplay;'>$alertMssg</p>';
         if($result2){
           
-              echo "
+              echo '
               <script>
               setInterval(() => {
                 window.location = './disapprovedfiles.php';
               }, 4000);
               </script>
-              ";}
+              ';}
       }
 if(!$result2){
   
 $id=$_GET['id'];
 $userName=$_GET['username'];
 
-$sql = "SELECT * FROM `appliedpolicy`  WHERE `id`=$id";
+$sql = 'SELECT * FROM `appliedpolicy`  WHERE `id`=$id';
 $result = mysqli_query($conn, $sql);
 if($result){
-  $sql2="UPDATE `notify` SET `admin_review`= '1' WHERE `username`='$userName'";
+  $sql2='UPDATE `notify` SET `admin_review`= '1' WHERE `username`='$userName'';
   $result2=mysqli_query($conn,$sql2);
 }
 $data = mysqli_fetch_object($result);
-$first_name=$data->{"first_name"};
-$last_name=$data->{"last_name"};
-$gender=$data->{"gender"};
-$dob=$data->{"dob"};
-$f_name=$data->{"f_name"};
-$m_name=$data->{"m_name"};
-$email=$data->{"email"};
-$addres=$data->{"address"};
-$policyName=$data->{"p_name"};
-$policyCat=$data->{"p_cat"};
-$policyPremium=$data->{"p_premium"};
-$policyCoverage=$data->{"p_coverage"};
-$pancard=$data->{"pancard"};
-$phone=$data->{"phone"};
-$pan_image=$data->{"pan_image"};
-$aadhar_image=$data->{"aadhar_image"};
-$medical_image=$data->{"medical_image"};
-$pass_image=$data->{"pass_image"};
-$unique_id=$data->{"unique_id"};
-$userName=$data->{"username"};
-$action=$data->{"action"};
-$date=$data->{"date"};
-$newDate = date("j-F Y", strtotime($date));
-$newTime = date("l, g:i a", strtotime($date));
+$first_name=$data->{'first_name'};
+$last_name=$data->{'last_name'};
+$gender=$data->{'gender'};
+$dob=$data->{'dob'};
+$f_name=$data->{'f_name'};
+$m_name=$data->{'m_name'};
+$email=$data->{'email'};
+$addres=$data->{'address'};
+$policyName=$data->{'p_name'};
+$policyCat=$data->{'p_cat'};
+$policyPremium=$data->{'p_premium'};
+$policyCoverage=$data->{'p_coverage'};
+$pancard=$data->{'pancard'};
+$phone=$data->{'phone'};
+$pan_image=$data->{'pan_image'};
+$aadhar_image=$data->{'aadhar_image'};
+$medical_image=$data->{'medical_image'};
+$pass_image=$data->{'pass_image'};
+$unique_id=$data->{'unique_id'};
+$userName=$data->{'username'};
+$action=$data->{'action'};
+$date=$data->{'date'};
+$newDate = date('j-F Y', strtotime($date));
+$newTime = date('l, g:i a', strtotime($date));
 
 $pathOfUserDoc='../userdoc/'.$userName.$policyName.'/';
-$display="block";
-$alerMssg = "";
-$alertError = "";
-$alertDisplay = "none";
-$approve="";
-$dissapp="";
+$display='block';
+$alerMssg = '';
+$alertError = '';
+$alertDisplay = 'none';
+$approve='';
+$dissapp='';
 if($action==1){
-$approve="<button type='submit' class='btn btn-warning' onClick='appPol($id)'>Approve</button>";
-$dissapp="<button type='submit' class='btn btn-danger' onClick='dissPol($id)'>Disapprove</button>";                
-$appheading="Reviewing Application Details of User";
+$approve='<button type='submit' class='btn btn-warning' onClick='appPol($id)'>Approve</button>';
+$dissapp='<button type='submit' class='btn btn-danger' onClick='dissPol($id)'>Disapprove</button>';                
+$appheading='Reviewing Application Details of User';
 
 }
 elseif($action==2){
     $userName=$_GET['username'];
-    $sql2="UPDATE `notify` SET `approved`= '1' WHERE `username`='$userName'";
+    $sql2='UPDATE `notify` SET `approved`= '1' WHERE `username`='$userName'';
     $result2=mysqli_query($conn,$sql2);
-  $alertMssg = "The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been Approved by you.";
-  $alertError = "class = 'error'";
-  $alertDisplay = "block";
-  echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
-  $appheading="Application Approved";
+  $alertMssg = 'The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been Approved by you.';
+  $alertError = 'class = 'error'';
+  $alertDisplay = 'block';
+  echo '<p $alertError style='display: $alertDisplay;'>$alertMssg</p>';
+  $appheading='Application Approved';
 }                       
 elseif($action==3){
   $userName=$_GET['username'];
-  $sql2="UPDATE `notify` SET `disapproved`= '1' WHERE `username`='$userName'";
+  $sql2='UPDATE `notify` SET `disapproved`= '1' WHERE `username`='$userName'';
   $result2=mysqli_query($conn,$sql2);
-  $alertMssg = "The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been disapproved by you.";
-  $alertError = "class = 'error'";
-  $alertDisplay = "block";
-  echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
-  $appheading="Application Disapproved";
+  $alertMssg = 'The Policy i.e $policyName of Id $unique_id that Cover $policyCoverage for $first_name and Username $userName has been disapproved by you.';
+  $alertError = 'class = 'error'';
+  $alertDisplay = 'block';
+  echo '<p $alertError style='display: $alertDisplay;'>$alertMssg</p>';
+  $appheading='Application Disapproved';
 }                       
 
 
 }
 else{
-$first_name="";
-$last_name="";
-$gender="";
-$dob="";
-$f_name="";
-$m_name="";
-$email="";
-$addres="";
-$policyName="";
-$policyCat="";
-$policyPremium="";
-$policyCoverage="";
-$pancard="";
-$phone="";
-$pan_image="";
-$aadhar_image="";
-$medical_image="";
-$pass_image="";
-$unique_id="";
-$userName="";
-$action="";
-$date="";
-$newDate =""; 
-$newTime =""; 
+$first_name='';
+$last_name='';
+$gender='';
+$dob='';
+$f_name='';
+$m_name='';
+$email='';
+$addres='';
+$policyName='';
+$policyCat='';
+$policyPremium='';
+$policyCoverage='';
+$pancard='';
+$phone='';
+$pan_image='';
+$aadhar_image='';
+$medical_image='';
+$pass_image='';
+$unique_id='';
+$userName='';
+$action='';
+$date='';
+$newDate =''; 
+$newTime =''; 
 }
 
 
@@ -164,13 +164,13 @@ $newTime ="";
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Application Review</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <style type='text/css'>
 body{
     color: black;
     margin-top:20px;
@@ -233,7 +233,7 @@ img {
   position: relative;
 }
 .about-list label:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -291,16 +291,16 @@ img {
 </head>
 <?php
 
-echo "
+echo '
 <body >
-<section style='display: $display;' class='section about-section gray-bg' id=about'>";
+<section style='display: $display;' class='section about-section gray-bg' id=about'>';
 ?>
                    <!-- echo $pathOfUserDoc.$pan_image; -->
                 
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-7">
-                        <div class="about-text go-to">
-                        <?php echo "
+                <div class='row align-items-center flex-row-reverse'>
+                    <div class='col-lg-7'>
+                        <div class='about-text go-to'>
+                        <?php echo '
                             <h4 class='dark-color'>$appheading</h4>
                             <div class='row about-list'>
                                 <div class'col-md-6'>
@@ -381,14 +381,14 @@ echo "
                                      
                                      
                                      </div>
-                                    ";?>
+
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class='col-lg-2'>
                         <?php
-                        echo "
+                        echo '
                                            <div class='about-avatar'>
                                            <p>Pan Card</p>
                                            <img src='$pathOfUserDoc$pan_image' title='Pan Image' alt=''>
@@ -397,14 +397,14 @@ echo "
                                          
                                             </div>
                         
-                        ";
+                        ';
                         
                         ?>
             
                     </div>
-                    <div class="col-lg-2">
+                    <div class='col-lg-2'>
                         <?php
-                        echo "
+                        echo '
                                            <div class='about-avatar'>
                                              <p>Medical Doc</p>
                                              <img src='$pathOfUserDoc$medical_image' title='Medical Image' alt=''>
@@ -414,7 +414,7 @@ echo "
                         
                       
                     </div>
-                </div>";
+                </div>';
                     
                         echo $approve;
                         echo $dissapp;
@@ -425,7 +425,7 @@ echo "
 
 
 
-<script src="../static/js/admin.js">
+<script src='../static/js/admin.js'>
 
 </script>
 </body>

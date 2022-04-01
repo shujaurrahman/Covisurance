@@ -179,24 +179,18 @@ $newpass = $currentUser.$pass; //new image src
                                 $alertError = "";
                                 $alertDisplay = "none";
                                 if($_SERVER["REQUEST_METHOD"] == "POST"){
-                                $alertMssg = "Note Down Your Unique Insurance Number: &nbsp $uniqeCustomerId &nbsp This will be needed when you
-                                will claim policy,You can also see Unique Insurane Id in my policies";
-                                $paymentMssg="A payment page will pop up Now pay your premium fee to start the policy process.";
-                                if($paymentMssg){
-                                    $sql2="UPDATE `notify` SET `payment_success`= '1' WHERE `username`='$currentUser'";
-                                    $result2=mysqli_query($conn,$sql2);
-                                }
-                                $alertError = "class = 'error'";
-                                $alertDisplay = "block";
-                                echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
-                                echo "<p $alertError style='display: $alertDisplay;'>$paymentMssg</p>";
-                                echo "
-                                <script>
-                                setInterval(() => {
-                                  window.location = 'https://pages.razorpay.com/pl_J875FCFkuOEgcL/view';
-                                }, 4000);
-                                </script>
-                                ";
+                                    $alertMssg = "Note Down Your Unique Insurance Number: &nbsp $uniqeCustomerId &nbsp This will be needed when you
+                                    will claim policy,You can also see Unique Insurane Id in my policies";
+                                    $paymentMssg="A payment page will pop up Now pay your premium fee to start the policy process.";
+                                    if($paymentMssg){
+                                        $sql2="UPDATE `notify` SET `payment_success`= '1' WHERE `username`='$currentUser'";
+                                        $result2=mysqli_query($conn,$sql2);
+                                    }
+                                    $alertError = "class = 'error'";
+                                    $alertDisplay = "block";
+                                    echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";
+                                    echo "<p $alertError style='display: $alertDisplay;'>$paymentMssg</p>";
+                                    header('../claim/invoice.php');
                                 }
                                 else{
                                     $alertMssg = "You Have already applied for this policy Check my policies section.";

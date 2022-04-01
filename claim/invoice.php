@@ -1,3 +1,17 @@
+<style>
+  .error {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        font-size: 18px;
+        font-weight: 600;
+        background: #71C9CE;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        margin: 10% 0 20px 0;
+    }
+</style>
+    
 <?php
 session_start();
 if(isset($_SESSION) and isset($_SESSION["username"])){  
@@ -8,7 +22,6 @@ else{
   header("Location ../index.php");
 }
 require "../partials/conn.php";
-
 
 $sql = "SELECT * FROM `appliedpolicy`  WHERE `username`='$currentName'";
 $result = mysqli_query($conn, $sql);
@@ -38,8 +51,15 @@ $date=$data->{"date"};
 $newDate = date("j-F Y", strtotime($date));
 $newTime = date("l, g:i a", strtotime($date));
 $subject="$policyName Details.";
-$msg="<strong>Congratulations!</strong> You Have applied for $policyName. Email has an attachment with your details.";
+$msg="<strong>Congratulations!</strong> You Have applied for $policyName. Email has an attachment with your Policies details.
+Make sure you have completed your first premuim of Rs. $policyPremium. <br>
+if not <a href='https://pages.razorpay.com/pl_J875FCFkuOEgcL/view'>click here</a> to pay first installment otherwise your policy won't be registered by admin.";
 $msgend="<i>Please ignore this message if this wasn't you.</i>";
+$alertMssg = "Please don't Refrese this page. Sending you to the payment gateway. Please complete payment process.
+<br>A Message with policy details as PDF file attachment has been to your Email $email. Please check your inbox
+(if not check your spam ) and keep it as a soft copy.";
+echo "<p class = 'error' style='display:'block';'>$alertMssg</p>";
+
 $html = '
 
 <html>
@@ -260,4 +280,13 @@ catch (Exception $e) {
 }
 
 unlink('./pdf/'.$currentName.'.pdf');
+
+echo "
+<script>
+setInterval(() => {
+  window.location = 'https://pages.razorpay.com/pl_J875FCFkuOEgcL/view';
+}, 6000);
+</script>
+";
+
 ?>
