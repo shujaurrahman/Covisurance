@@ -13,17 +13,7 @@ $result2="";
 if(isset($_GET) and isset($_GET['clear'])){
   $id= $_GET['clear'];
       $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null  WHERE `id`=$id";
-      $result2 = mysqli_query($conn,$sql);
-      // echo var_dump($result2);
-      // if($result2){
-      //   echo "
-      //   <script>
-      //   setInterval(() => {
-      //     window.location = './approvedapp.php';
-      //   }, 4000);
-      //   </script>
-      //   ";}
-        
+      $result2 = mysqli_query($conn,$sql);        
       }
 $logout="";
 $payment_success="";
@@ -41,6 +31,7 @@ $email_verified="";
 $account="";
 $update_info="";
 $caughtup="";
+$pdf="";
 $backbutton="";
 
 $sql= "SELECT * FROM `notify` WHERE `username`='$currentUser'";
@@ -52,7 +43,7 @@ if($aff>0){
   if($data->{'signed_in'}==1 or $data->{'logout'}==1 or $data->{'email_verified'}==1 or $data->{'password_reset'}==1
   or $data->{'update_info'}==1 or $data->{'profile_pic'}==1 or $data->{'policy_app'}==1 or $data->{'policy_claimed'}==1 or $data->{'admin_review'}==1
   or $data->{'approved'}==1 or $data->{'disapproved'}==1 or $data->{'download_pdf'}==1 or $data->{'question'}==1
-  or $data->{'payment_success'}==1) {
+  or $data->{'payment_success'}==1 or $data->{'pdf'}==1) {
   $button="<button type='submit' class='btn btn-warning' onClick='clearNotification($id)'>Clear All</button>";
   $backbutton="<a href='../user profile/profile.php'><button type='submit' class='btn btn-warning back' > Go Back</button></a>";
 }
@@ -62,6 +53,7 @@ else{
   $caughtup='<h4><strong> No New Notifications!!</strong> You are all caught up.</h4>';
   }
   $date=$data->{"date"};
+  $email=$data->{'email'};
     $newDate = date("j-F Y", strtotime($date));
     $newTime = date("l, g:i a", strtotime($date));
   if($data->{'account_created'}==1){
@@ -228,6 +220,18 @@ else{
     </div>"
     ;
   }
+  if($data->{'pdf'}==1){
+    $pdf="<div class='alert alert-success alert-white rounded'
+    <button type='button' data-dismiss='alert' aria-hidden='true' class='close'></button>
+    <div class='icon'>
+    <i class='fa fa-solid fa-at'></i>
+    </div>
+    <strong>PDF MAILED!</strong> 
+    An Email with policy details as PDF file attachment has been to $email. Please check your inbox
+    (or check your spam ) and keep it as a soft copy.
+    </div>"
+    ;
+  }
 
 
 }
@@ -253,6 +257,7 @@ else{
             echo "Notifications $backbutton $button </h1>
              
             $caughtup
+            $pdf
             $logout
             $profile_pic
             $update_info

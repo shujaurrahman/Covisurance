@@ -7,9 +7,13 @@ if(isset($_SESSION) and isset($_SESSION["adminusername"])){
 	$currentName=$_SESSION["adminusername"];
     $boolAdminLoggedIn = true;   
 }
+else{
+  header('../index.php');
+}
 
 
 $row = "";
+$policy="";
 
 $fetch=false;
 $sql = "SELECT * FROM `appliedpolicy` WHERE `action`='2' ORDER BY id ASC";
@@ -28,22 +32,15 @@ $firstName = $data->{"first_name"};
 $lastName = $data->{"last_name"};
 $userName = $data->{"username"};
 $userEmail = $data->{"email"};
+$policy = $data->{"p_name"};
 $phoneNumber = $data->{"phone"};
 $pancard = $data->{"pancard"};
 $date = $data->{"date"};
-// $action=$data->{"action"};
 $uniqueId=$data->{'unique_id'};
 $newDate = date("j F Y", strtotime($date));
 $newTime = date("l, g:i a", strtotime($date));
 $id=$data->{"id"};
-// if(empty($image)){
-// 	$profilepic="<img src='../static/img/default.jpg' alt='Image Not uploaded'>
-// 	<p>User haven't uploaded profile pic yet.</p>";
 
-// }
-// else{
-// $profilepic="<img src='../userimages/$image' alt='Image Not uploaded'>";
-// }
 
 $viewButton="<button type='button' class='btn btn-outline-info mx-2 my-2' onclick=window.location.href='./userpage.php?id=$id&username=$userName'>View</button>";
 $deleteButton="<button type='button' class='btn btn-outline-danger mx-2 my-2' onClick='appDel($id)'>Delete</button>";
@@ -89,7 +86,6 @@ if($_GET['delapp']){
 
 
 
-
 ?>
 
 <!doctype html>
@@ -132,6 +128,7 @@ if($_GET['delapp']){
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
+
 						      <th>First Name</th>
 						      <th>Last Name</th>
 						      <th>Username</th>
@@ -140,6 +137,7 @@ if($_GET['delapp']){
 						      <th>Pancard</th>
 						      <th>Unique Insurance ID</th>
 						      <th>Applied on</th>
+						      <th>Action</th>
 
 						    </tr>
 						  </thead>

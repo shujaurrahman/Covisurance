@@ -137,7 +137,7 @@ if($_GET['delapp']){
 						      <th>Phone Number</th>
 						      <th>Unique Insurance ID</th>
 						      <th>Applied on</th>
-						      <th>Delete Application</th>
+						      <th>Action</th>
 
 						    </tr>
 						  </thead>

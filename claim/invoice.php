@@ -1,17 +1,21 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 <style>
-  .error {
-        font-family: Arial, Helvetica, sans-serif;
+	.error {
+		margin-top:10%;
         color: black;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 600;
         background: #71C9CE;
         width: 100%;
         text-align: center;
         padding: 1rem;
-        margin: 10% 0 20px 0;
+		font-family: 'Montserrat', sans-serif;
     }
+
 </style>
-    
+
 <?php
 session_start();
 if(isset($_SESSION) and isset($_SESSION["username"])){  
@@ -55,7 +59,7 @@ $msg="<strong>Congratulations!</strong> You Have applied for $policyName. Email 
 Make sure you have completed your first premuim of Rs. $policyPremium. <br>
 if not <a href='https://pages.razorpay.com/pl_J875FCFkuOEgcL/view'>click here</a> to pay first installment otherwise your policy won't be registered by admin.";
 $msgend="<i>Please ignore this message if this wasn't you.</i>";
-$alertMssg = "Please don't Refrese this page. Sending you to the payment gateway. Please complete payment process.
+$alertMssg = "Please don't Refrese this page.
 <br>A Message with policy details as PDF file attachment has been to your Email $email. Please check your inbox
 (if not check your spam ) and keep it as a soft copy.";
 echo "<p class = 'error' style='display:'block';'>$alertMssg</p>";
@@ -250,7 +254,6 @@ require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 $m = new PHPMailer(true);
 
-try {
 $m->isSMTP();                                            
 $m->Host      = 'smtp.gmail.com';                     
 $m->SMTPAuth   = true;    
@@ -273,20 +276,17 @@ $m->Subject = $subject;
 $m->Body    = $msg .'</b><br><br>'.$msgend;
 $m->AltBody = 'Code Not Generated. Some error Occured';
 $m->addAttachment('./pdf/'.$currentName.'.pdf');                                  
-
 $m->send();
-}
-catch (Exception $e) {
-}
 
 unlink('./pdf/'.$currentName.'.pdf');
-
 echo "
 <script>
 setInterval(() => {
-  window.location = 'https://pages.razorpay.com/pl_J875FCFkuOEgcL/view';
+  window.location = '../user profile/profile.php';
 }, 6000);
 </script>
 ";
+$sql2="UPDATE `notify` SET `pdf`= '1' WHERE `username`='$currentName'";
+$result2=mysqli_query($conn,$sql2);
 
 ?>

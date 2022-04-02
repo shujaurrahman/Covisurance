@@ -20,7 +20,7 @@ $logout = "../logout/logout.php?username=$currentUser";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Action-user-profile</title>
+    <title>Dassboard-user</title>
     <?php
     require "../partials/link.php";
     ?>
@@ -30,6 +30,22 @@ $logout = "../logout/logout.php?username=$currentUser";
         .active {
             visibility: hidden;
         }
+        
+        button{
+  position: absolute;
+  right: 13.5%;
+  top: 22%;
+  margin: 0 !important;
+  background-color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}
+        small{
+  position: absolute;
+  right: 11%;
+  top: 30%;
+  margin: 0 !important;
+  color: var(--dark-one) !important;
+}
 
     </style>
     <link rel="stylesheet" href="../static/css/style.css">
@@ -84,7 +100,10 @@ $logout = "../logout/logout.php?username=$currentUser";
     </div>
        
     <?php   
-            echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> Welcome, $currentUser</h2>";
+      $button="<a href='../claim/invoice.php'><button class='btn btn-warning'>Email Invoice</button></a>";
+      echo "<small> Click to get soft copy with  current<br> policy details to your email.</small> 
+      $button";
+      echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> Welcome, $currentUser</h2>";
     echo "$policyCardBlock";
     echo "$payments";
     ?>
