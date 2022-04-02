@@ -12,7 +12,7 @@ else{
 $result2="";
 if(isset($_GET) and isset($_GET['clear'])){
   $id= $_GET['clear'];
-      $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null  WHERE `id`=$id";
+      $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null,`pdf`=null  WHERE `id`=$id";
       $result2 = mysqli_query($conn,$sql);        
       }
 $logout="";
