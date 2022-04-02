@@ -99,10 +99,14 @@ $logout = "../logout/logout.php?username=$currentUser";
         </div>
     </div>
        
-    <?php   
+    <?php 
+       $sql = "SELECT * FROM `appliedpolicy` Where `username`='$currentUser' and `action` = 0";
+       $result = mysqli_query($conn,$sql);
+       $aff = mysqli_affected_rows($conn);
+       if($aff>0){  
       $button="<a href='../claim/invoice.php'><button class='btn btn-warning'>Email Invoice</button></a>";
       echo "<small> Click to get soft copy with  current<br> policy details to your email.</small> 
-      $button";
+      $button";}
       echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> Welcome, $currentUser</h2>";
     echo "$policyCardBlock";
     echo "$payments";

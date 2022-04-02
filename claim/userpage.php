@@ -341,13 +341,7 @@ $print= "
 echo $print;
 
 
-//THIS CODE IS MAKING PROBLEM THE LIBRARY CLASS IS NOT IDENTIFIED IT SAYS BUT 
-// I HAVE USED AS DEFIEND on mpdf library avaiable on github/mpdf 
-// use Mpdf\Mpdf;
-// require_once __DIR__ .'/vendor/autoload.php';
-// $mpdf->new mPDF();
-// $mpdf->WriteHTML('<h1>Hi</h1>');
-// $mpdf->Output('myfile.pdf','D');
+
 
 ?>
 </html>

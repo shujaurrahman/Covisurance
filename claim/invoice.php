@@ -13,6 +13,10 @@
         padding: 1rem;
 		font-family: 'Montserrat', sans-serif;
     }
+	img{
+		width: 50%;
+		height: 50%;
+	}
 
 </style>
 
@@ -25,6 +29,34 @@ if(isset($_SESSION) and isset($_SESSION["username"])){
 else{
   header("Location ../index.php");
 }
+$first_name="";
+$last_name="";
+$gender="";
+$dob="";
+$f_name="";
+$m_name="";
+$email="";
+$addres="";
+$policyName="";
+$policyCat="";
+$policyPremium="";
+$policyCoverage="";
+$pancard="";
+$phone="";
+$pan_image="";
+$aadhar_image="";
+$medical_image="";
+$pass_image="";
+$unique_id="";
+$userName="";
+$action="";
+$date="";
+$newDate =""; 
+$newTime =""; 
+$subject="";
+$msg="";
+$msgend="";
+$alertMssg="You have applied yet";
 require "../partials/conn.php";
 
 $sql = "SELECT * FROM `appliedpolicy`  WHERE `username`='$currentName'";
@@ -54,6 +86,8 @@ $action=$data->{"action"};
 $date=$data->{"date"};
 $newDate = date("j-F Y", strtotime($date));
 $newTime = date("l, g:i a", strtotime($date));
+$pathOfUserDoc='../userdoc/'.$userName.$policyName.'/';
+
 $subject="$policyName Details.";
 $msg="<strong>Congratulations!</strong> You Have applied for $policyName. Email has an attachment with your Policies details.
 Make sure you have completed your first premuim of Rs. $policyPremium. <br>
@@ -162,60 +196,88 @@ mpdf-->
 <td>'.$dob.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">7</td>
 <td align="center">Email</td>
 <td>'.$email.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">8</td>
 <td align="center">Address</td>
 <td>'.$addres.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">9</td>
 <td align="center">Policy</td>
 <td>'.$policyName.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">10</td>
 <td align="center">Policy Category</td>
 <td>'.$policyCat.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">11</td>
 <td align="center">Policy Premium</td>
 <td>'.$policyPremium.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">12</td>
 <td align="center">Policy Coverage</td>
 <td>'.$policyCoverage.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">13</td>
 <td align="center">Policy Premium</td>
 <td>'.$policyPremium.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">14</td>
 <td align="center">Phone Number</td>
 <td>'.$phone.'</td>
 </tr>
 <tr>
-<td align="center">5</td>
+<td align="center">15</td>
 <td align="center">Your Unique Insurance ID</td>
 <td>'.$unique_id.'</td>
 </tr>
+
 <tr>
-<tr>
-<td align="center">5</td>
-<td align="center">PAN no</td>
+<td align="center">16</td>
+<td align="center">Pancard</td>
 <td>'.$pancard.'</td>
 </tr>
-<tr>
+
+
+
+
+
+
+
+
+
+
 
 </tbody>
 </table>
+<br><br><br><br><br>
+
+<div>
+<img align="center" style="width:40%; height:40%; display: inline-block;" src="'.$pathOfUserDoc.$pass_image.'" title="Pan Image" alt="">
+<img align="center" style="width:40%; height:40%; display: inline-block;"  src="'.$pathOfUserDoc.$medical_image.'" title="Pan Image" alt=""><br><br><br><br>
+<img align="center" style="width:40%; height:40%; display: inline-block;"  src="'.$pathOfUserDoc.$aadhar_image.'" title="Pan Image" alt="">
+<img align="center" style="width:40%; height:40% ;display: inline-block;" src="'.$pathOfUserDoc.$pan_image.'" title="Pan Image" alt="">
+</div>
+<strong align="center">Documents
+</strong>
+<p>
+(1.PAN IMAGE)
+(2.AADHAAR IMAGE)
+(3.MEDICAL REPORT)
+(4.PASSPORT IMAGE)
+
+</p>
+
+<br><br>
 <div style="text-align: center; font-style: italic;">Payment terms: payment due in 30 days</div>
 </body>
 </html>
