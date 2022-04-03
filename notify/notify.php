@@ -12,7 +12,7 @@ else{
 $result2="";
 if(isset($_GET) and isset($_GET['clear'])){
   $id= $_GET['clear'];
-      $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null,`pdf`=null  WHERE `id`=$id";
+      $sql = "UPDATE `notify` SET `account_created`=null, `email_verified`=null, `signed_in`=null, `password_reset`=null ,`update_info`=null ,`profile_pic`=null ,`policy_app`=null ,`policy_claimed`=null ,`admin_review`=null ,`approved`=null ,`disapproved`=null ,`download_pdf`=null ,`question`=null ,`logout`=null ,`payment_success`=null,`pdf`=null,`pass_activity`=null  WHERE `id`=$id";
       $result2 = mysqli_query($conn,$sql);        
       }
 $logout="";
@@ -33,6 +33,7 @@ $update_info="";
 $caughtup="";
 $pdf="";
 $backbutton="";
+$activity="";
 
 $sql= "SELECT * FROM `notify` WHERE `username`='$currentUser'";
 $result=mysqli_query($conn,$sql);
@@ -43,7 +44,7 @@ if($aff>0){
   if($data->{'signed_in'}==1 or $data->{'logout'}==1 or $data->{'email_verified'}==1 or $data->{'password_reset'}==1
   or $data->{'update_info'}==1 or $data->{'profile_pic'}==1 or $data->{'policy_app'}==1 or $data->{'policy_claimed'}==1 or $data->{'admin_review'}==1
   or $data->{'approved'}==1 or $data->{'disapproved'}==1 or $data->{'download_pdf'}==1 or $data->{'question'}==1
-  or $data->{'payment_success'}==1 or $data->{'pdf'}==1) {
+  or $data->{'payment_success'}==1 or $data->{'pdf'}==1 or $data->{'pass_activity'}==1) {
   $button="<button type='submit' class='btn btn-warning' onClick='clearNotification($id)'>Clear All</button>";
   $backbutton="<a href='../user profile/profile.php'><button type='submit' class='btn btn-warning back' > Go Back</button></a>";
 }
@@ -232,7 +233,18 @@ else{
     </div>"
     ;
   }
-
+  if($data->{'pass_activity'}==1){
+    $activity="<div class='alert alert-success alert-white rounded'
+    <button type='button' data-dismiss='alert' aria-hidden='true' class='close'></button>
+    <div class='icon'>
+    <i class='fa fa-regular fa-file'></i>
+    </div>
+    <strong>Unusual Activity!</strong> 
+     We noticied an unusual acitivity with your account associated with emial $email. Please Secure your account contact 
+     <a href='../contact us/contactus.php'>Admin</a><br><i>if this was you ignore this message.</i>
+    </div>"
+    ;
+  }
 
 }
 ?>
@@ -247,16 +259,15 @@ else{
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://kit.fontawesome.com/06edf57802.js" crossorigin="anonymous"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
           <h1>  <?php
             echo "Notifications $backbutton $button </h1>
              
             $caughtup
+            $activity
             $pdf
             $logout
             $profile_pic

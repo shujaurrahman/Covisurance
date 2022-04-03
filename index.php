@@ -153,12 +153,12 @@
             if($status=='verified'){
             $_SESSION["username"] = $username;
             // $website = "";
-            header("Location: $website/user profile/profile.php");
-            $sql2="UPDATE `notify` SET `signed_in`= '1' WHERE `username`='$username'";
-            $result2=mysqli_query($conn,$sql2);
             $loginMssg = "Logged in Successfully";
             $loginError = "class = 'error'";
             $loginDisplay = "block";
+            header("Location: $website/user profile/profile.php");
+            $sql2="UPDATE `notify` SET `signed_in`= '1' WHERE `username`='$username'";
+            $result2=mysqli_query($conn,$sql2);
             }
             else{
               $userMssg = "Looks like your email isn't verified Verify Now";
@@ -186,6 +186,8 @@
           $userDisplay = "block";
         }
          elseif($boolWrongPassword) {
+          $sql2="UPDATE `notify` SET `pass_activity`= '1' WHERE `username`='$username'";
+          $result2=mysqli_query($conn,$sql2);
           $passwordMssg = "Wrong Password";
           $passwordError = "class = 'error'";
           $passwordDisplay = "block";

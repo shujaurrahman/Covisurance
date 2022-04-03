@@ -64,7 +64,7 @@ $notification="$website/notify/notify.php";
 
 //Notification 
 $sql="SELECT SUM(COALESCE(account_created,0)+(COALESCE(email_verified,0))+(COALESCE(signed_in,0))+(COALESCE(password_reset,0))+(COALESCE(update_info,0))+(COALESCE(profile_pic,0))+(COALESCE(policy_app,0))+(COALESCE(policy_claimed,0))+(COALESCE(admin_review,0))+(COALESCE(approved,0))+
-(COALESCE(`disapproved`,0))+(COALESCE(`download_pdf`,0))+(COALESCE(`question`,0))+(COALESCE(`logout`,0))+(COALESCE(`payment_success`,0))+(COALESCE(`pdf`,0))) AS sum_value FROM `notify` WHERE `username`='$currentUser';";
+(COALESCE(`disapproved`,0))+(COALESCE(`download_pdf`,0))+(COALESCE(`question`,0))+(COALESCE(`logout`,0))+(COALESCE(`payment_success`,0))+(COALESCE(`pdf`,0))+(COALESCE(`pass_activity`,0))) AS sum_value FROM `notify` WHERE `username`='$currentUser';";
 $result=mysqli_query($conn,$sql);
 $aff=mysqli_fetch_assoc($result);
 $sum = $aff['sum_value'];
