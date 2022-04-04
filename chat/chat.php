@@ -2,7 +2,7 @@
   session_start();
   include_once "../partials/conn.php";
   if(!isset($_SESSION['unique_id'])){
-    header("location: login.php");
+    header("location: ../index.php");
   }
 ?>
 <?php include_once "header.php"; ?>

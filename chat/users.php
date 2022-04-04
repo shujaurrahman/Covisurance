@@ -19,14 +19,9 @@
           ?>
           <?php  
           $admin=$_SESSION['unique_id'];
-          if(!$admin==123456789){
+         
            require "../userimages/profileImagefetch.php";
-                            echo $profilepic; 
-                          }
-          else{
-            echo "<img src='../userimages/s.jpg' alt='../userimages/deafault.svg'>";
-          }
-                            ?>
+                            echo $profilepic;                ?>
           <div class="details">
             <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
             <p><?php echo $row['status']; ?></p>
