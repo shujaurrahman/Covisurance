@@ -11,7 +11,7 @@ if (isset($_SESSION) and isset($_SESSION['username'])) {
 	$currentUser = $_SESSION['username'];
 	$boolLoggedIn = true;
 } else {
-	//   header("Location: ../index.php");
+	  header("Location: ../index.php");
 }
 $submit = false;
 if ($boolLoggedIn) {
@@ -31,12 +31,6 @@ if ($boolLoggedIn) {
 	$Dbirthday = $data->{"birthday"};
 	$Dimage=$data->{"_image"};
 }
-// if(empty($Dimage)){
-// if(isset($_POST['submit'])){
-
-// 	$querry="INSERT INTO $tableName (_image) VALUES ('$image') WHERE username='$currentUser'";
-// 	$processImage=mysqli_query($conn,$querry);
-// 	echo $processImage;
 
 
 

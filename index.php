@@ -152,10 +152,20 @@
           if (!$boolWrongPassword) {
             if($status=='verified'){
             $_SESSION["username"] = $username;
-            // $website = "";
+            $_SESSION["email"] = $email;
             $loginMssg = "Logged in Successfully";
             $loginError = "class = 'error'";
             $loginDisplay = "block";
+            $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
+            if(mysqli_num_rows($select_sql2) > 0){
+                $result = mysqli_fetch_assoc($select_sql2);
+                $status = "Online now";
+                $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE email = '{$email}'");
+                $_SESSION['unique_id'] = $result['unique_id'];
+                echo "success";
+            }else{
+                echo "This email address not Exist!";
+            }
             header("Location: $website/user profile/profile.php");
             $sql2="UPDATE `notify` SET `signed_in`= '1' WHERE `username`='$username'";
             $result2=mysqli_query($conn,$sql2);

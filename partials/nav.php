@@ -57,6 +57,7 @@ $homePage = "$website/index.php";
 $userProfile="$website/user profile/profile.php";
 $testimonial="$website/testimonial/testimonial.php";
 $notification="$website/notify/notify.php";
+$chat="$website/chat/users.php";
 
 
 
@@ -82,6 +83,7 @@ $claimBlock="<a href='$claim'>Claim</a>";
 $testimonialBlock="<a href='$testimonial'>Post Testimonial</a>";
 $signUpBlock="<a href='$signUp' class='btn'>Get Started</a>";
 $contactUsBlock = "  <a href='$contactUs'>Contact us</a>";
+$chatBlock = "  <a href='$chat'>Chat</a>";
 $notifyBlock="
 <a href='$notification?username=$currentUser'><i class='fas fa-solid fa-envelope fa-2x'></i><span class='badge badge-danger' style='background-color:red !important;  border-radius:50%; padding:0 6px;
 position:relative; top:-20px; left:-17px; color: white;'>$sum</span></a>
@@ -425,6 +427,11 @@ else{
   $newTime = "";
 }
 
+
+
+
+
+
 // different condition to change assigned as variable blocks when user is logged in =============
 
 
@@ -456,6 +463,7 @@ if ($boolLoggedIn) {
         $claimBlock
         $testimonialBlock
         $contactUsBlock
+        $chatBlock
         $profileBlock
         $notifyBlock
       </div>

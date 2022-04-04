@@ -246,8 +246,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $passwordHash = password_hash($password, PASSWORD_DEFAULT);
       $sql="INSERT INTO `alluser`( `first_name`, `last_name`, `username`, `email`, `birthday`, `phonenumber`, `password`,`code`,`status`) VALUES 
       ('$firstName','$lastName','$username','$email','$birthday','$phoneNumber','$passwordHash','$code','$status')";
-      // $result = mysqli_query($conn, $sql);
-      // echo var_dump($result);
+      //Chat functionality=========================================================================================
+      if($sql){
+          $ran_id = rand(time(), 100000000);
+          $status = "Active now";
+          $insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, status)
+          VALUES ({$ran_id}, '{$firstName}','{$lastName}', '{$email}','{$status}')");
+          }
+
       $data_check = mysqli_query($conn, $sql);
       if($data_check){
           $sql2="INSERT INTO `notify`(`username`,`email`,`account_created`) VALUES ('$username','$email','1')";

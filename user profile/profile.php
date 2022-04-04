@@ -64,6 +64,7 @@ $logout = "../logout/logout.php?username=$currentUser";
 
             require "../userimages/profileImagefetch.php";
             echo $profilepic;
+            
 
             ?>
         </div>
@@ -71,7 +72,6 @@ $logout = "../logout/logout.php?username=$currentUser";
             <?php
             echo "
             <h3>$currentUser<br>
-         
             </h3>
             "
             ?>
@@ -107,9 +107,18 @@ $logout = "../logout/logout.php?username=$currentUser";
       $button="<a href='../claim/invoice.php'><button class='btn btn-warning'>Email Invoice</button></a>";
       echo "<small> Click to get soft copy with  current<br> policy details to your email.</small> 
       $button";}
+      
       echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> Welcome, $currentUser</h2>";
     echo "$policyCardBlock";
     echo "$payments";
+    if ($boolLoggedIn) {
+        $sql = "SELECT * FROM `alluser` Where username ='$currentUser'";
+        $result = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_object($result);
+        $image = $data->{"_image"};
+    }
+    $email= $_SESSION['email'];
+    $sql = mysqli_query($conn, "UPDATE users SET img = '{$image}' WHERE email = '{$email}'");
     ?>
 
     <script>

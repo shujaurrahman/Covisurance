@@ -78,6 +78,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="../chat/users.php" class="d-flex">
+                                        <p>Chat With Clients</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="logout.php" class="d-flex">
                                         <p>Logout</p>
                                      
