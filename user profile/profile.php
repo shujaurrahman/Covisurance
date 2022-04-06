@@ -118,7 +118,11 @@ $logout = "../logout/logout.php?username=$currentUser";
         $image = $data->{"_image"};
     }
     $email= $_SESSION['email'];
+    if(empty($image)){
+    $sql = mysqli_query($conn, "UPDATE users SET img = 'userdefault.jpg' WHERE email = '{$email}'");}
+    else{
     $sql = mysqli_query($conn, "UPDATE users SET img = '{$image}' WHERE email = '{$email}'");
+    }
     ?>
 
     <script>

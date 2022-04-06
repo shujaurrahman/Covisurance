@@ -45,13 +45,20 @@ adminPassword = Opssasur@786<br />
 - Authetication of Email usimg SMTP 
 - Sign in and View User profile.
 - Reset Password by email authentication (SMTP).
-- Update prfile pic or update details
-- Change Password
-- Apply any Policy from User profile Dassboard
+- Update prfile pic or update details.
+- Change Password.
+- Apply any Policy from User profile Dassboard.
+- Pay premium of Current Policy -> Secure razopay gateway.
+- Claim the insured Policy.
 - View all the applied policy in My policy.
-- Download the soft copy of Applied Policy
-- Claim the insured Policy 
-- Pay premium of Current Policy
+- Download the soft copy of Applied Policy.
+- Mail soft copy of current policy to your email.
+- Chat with other users, Discuss policies with them.
+- Chat with admin in case of any problem.
+- Get dedicated Notification for every activity in  Notification panel.
+- Get Notification Incase anyone tries to login your account.
+- Incase admin is not online Send your detail Querry with problem Explanation through-> Contact Us
+- Post testimonial that will be displayed at the home page.
 
 ##### ANY ONE:
 - View all the Policies Available on website
@@ -70,7 +77,7 @@ For more look in snapshots.<br />
 - open your browser
 - Copy and past: In xampp or laragone or whatever you use.
 - http://localhost/htdocs/index.php
-- Now you are good to go 
+- Now you are good to go .
 - pull request .
 - contribute and refine code and bugs
 
@@ -90,9 +97,10 @@ For more look in snapshots.<br />
   
  <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> </p>
 
--Authentication
+-Authentication(THROGUH EMAIL OTP ->PHP MAILER)
 
  <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> 
+
 
 
 ## Snaptshots
@@ -157,7 +165,7 @@ For more look in snapshots.<br />
 <br/>
 
 
-#### SMTP AUTHENTICATION ENABLED 
+#### SMTP AUTHENTICATION ENABLED AND NEW FEATURES
 ![alt text](./snaps/Screenshot%20(275).png)
 ![alt text](./snaps/Screenshot%20(276).png)
 ![alt text](./snaps/Screenshot%20(277).png)
@@ -170,6 +178,22 @@ For more look in snapshots.<br />
 ![alt text](./snaps/Screenshot%20(284).png)
 ![alt text](./snaps/Screenshot%20(285).png)
 ![alt text](./snaps/Screenshot%20(286).png)
+![alt text](./snaps/Screenshot%20(301).png)
+![alt text](./snaps/Screenshot%20(302).png)
+![alt text](./snaps/Screenshot%20(303).png)
+![alt text](./snaps/Screenshot%20(304).png)
+![alt text](./snaps/Screenshot%20(305).png)
+![alt text](./snaps/Screenshot%20(306).png)
+![alt text](./snaps/Screenshot%20(307).png)
+![alt text](./snaps/Screenshot%20(308).png)
+![alt text](./snaps/Screenshot%20(309).png)
+![alt text](./snaps/Screenshot%20(310).png)
+![alt text](./snaps/Screenshot%20(311).png)
+![alt text](./snaps/Screenshot%20(312).png)
+![alt text](./snaps/Screenshot%20(313).png)
+![alt text](./snaps/Screenshot%20(314).png)
+![alt text](./snaps/Screenshot%20(315).png)
+![alt text](./snaps/Screenshot%20(316).png)
 
 
 ![ForTheBadge built-by-developers](https://forthebadge.com/images/badges/built-by-developers.svg)
