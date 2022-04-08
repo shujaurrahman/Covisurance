@@ -4,6 +4,7 @@
   if(!isset($_SESSION['unique_id'])){
     header("location: ../index.php");
   }
+
 ?>
 <?php include_once "header.php"; ?>
 <body>
@@ -25,7 +26,23 @@
           <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
           <p><?php echo $row['status']; ?></p>
         </div>
+        <button type='submit' onclick='clearChat()' class='logout'>Clear Chat</button>
+
       </header>
+      <?php
+        $outgoing_id = $_SESSION['unique_id'];
+        if(isset($_GET) and isset($_GET['clearChat'])){
+             
+             $sql="DELETE
+             FROM messages
+             WHERE 
+             (`outgoing_msg_id`={$outgoing_id} AND `incoming_msg_id`='$user_id')
+             OR
+             (`outgoing_msg_id`={$user_id} AND `incoming_msg_id`='$outgoing_id')
+             ";
+             $result=mysqli_query($conn,$sql);
+        }
+      ?>
       <div class="chat-box">
 
       </div>
@@ -38,6 +55,13 @@
   </div>
 
   <script src="javascript/chat.js"></script>
-
+  <?php
+  echo "
+    <script>
+    function clearChat(){     
+        window.location = `chat.php?user_id=$user_id&clearChat`;
+}
+  </script>"
+?>
 </body>
 </html>

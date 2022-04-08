@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             $_SESSION["adminusername"] = $currentUsername;
             $status = "Online now";
             $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE email = 'adminshuja@gmail.com'");
-            $_SESSION['unique_id'] = 123456789; 
+            $_SESSION['unique_id'] = '123456789'; 
             $_SESSION['email'] = 'adminshuja@gmail.com';    
             header("location: ./home.php");
         }

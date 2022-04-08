@@ -167,6 +167,24 @@ body{
   color: var(--main-color);
   font-size: 18px;
 }
+
+.chat-area header .logout{
+  display: block;
+  background: var(--main-color);
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 7px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 17px;
+  margin-left: 2.5rem;
+  
+}
+.chat-area header .logout:hover{
+  background: red;
+  color: #fff;
+}
 .chat-area header img{
   height: 45px;
   width: 45px;

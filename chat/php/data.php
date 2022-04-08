@@ -25,4 +25,5 @@
                     <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
                 </a>';
     }
+
 ?>
