@@ -8,6 +8,7 @@
   <?php
   require "./partials/conn.php";
   require "./partials/link.php";
+  require "./ip.php";
 
   ?>
   <link rel="stylesheet" href="./static/css/style.css" />

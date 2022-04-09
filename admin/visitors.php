@@ -10,45 +10,32 @@ if(isset($_SESSION) and isset($_SESSION["adminusername"])){
 
 $row = "";
 
-$sql = "SELECT * FROM `alluser`";
+$sql = "SELECT * FROM `visitors`";
 $result = mysqli_query($conn, $sql);
-
 while($data = mysqli_fetch_object($result)){
-$firstName = $data->{"first_name"};
-$lastName = $data->{"last_name"};
-$userName = $data->{"username"};
-$userEmail = $data->{"email"};
-$phoneNumber = $data->{"phonenumber"};
-$annualIncome = $data->{"annual_income"};
-$adress = $data->{"_address"};
-$city = $data->{"city"};
-$country = $data->{"country"};
-$pancard = $data->{"pancard"};
-$birthday = $data->{"birthday"};
+$browser = $data->{"browser"};
+$ip = $data->{"ip"};
+$country = $data->{"county"};
+$city= $data->{"city"};
+$region = $data->{"region"};
+$latitude = $data->{"latitude"};
+$longitude = $data->{"longitude"};
 $date = $data->{"date"};
-$image = $data->{"_image"};
-$newDate = date("j F Y", strtotime($date));
-$newTime = date("l, g:i a", strtotime($date));
-if(empty($image)){
-	$profilepic="<img src='../static/img/default.jpg' alt='Image Not uploaded'>
-	<p>User haven't uploaded profile pic yet.</p>";
+$time = $data->{"time"};
+$count = $data->{"count"};
 
-}
-else{
-$profilepic="<img src='../userimages/$image' alt='Image Not uploaded'>";
-}
 $row.=  "
 <tr class='alert' role='alert'>
-  <td>$firstName</td>
-  <td>$lastName</td>
-  <td>$userName</td>
-  <td>$userEmail</td>
-  <td>$phoneNumber</td>
-  <td>$birthday</td>
-  <td>$pancard</td>
-  <td>$adress.$city.$country</td>
-  <td>$newDate at $newTime</td>
-  <td>$profilepic</td>
+  <td>$browser</td>
+  <td>$ip</td>
+  <td>$country</td>
+  <td>$city</td>
+  <td>$region</td>
+  <td>$latitude</td>
+  <td>$longitude</td>
+  <td>$date</td>
+  <td>$time</td>
+  <td>$count</td>
 
 </tr>";
 
@@ -61,7 +48,7 @@ $row.=  "
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>All Registered users </title>
+  	<title>Viewers</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -72,13 +59,13 @@ $row.=  "
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 	</head>
+
+    <button style="position:relative !important; top:0; right:0;background-color:#00ADB5; color:#fff;" onclick="window.location.href='./home.php'">Back to Admin Panel</button>
+
 	<body style="background-color:#f3f3f3 ;">
-        <?php
-        require "./nav.php";
-        ?>
 			<div style="color:#00ADB5;" class="row justify-content-center">
 				<div class="col-md-6 text-center mt-5 mb-3">
-					<h2 class="heading-section">All Registered Users</h2>
+					<h4 class="heading-section">Website Visitors Details</h4>
 				</div>
 			</div>
 			<div class="row">
@@ -87,16 +74,16 @@ $row.=  "
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>First Name</th>
-						      <th>Last Name</th>
-						      <th>Username</th>
-						      <th>Email</th>
-						      <th>Phone Number</th>
-						      <th>DOB</th>
-						      <th>Pancard</th>
-						      <th>Address </th>
-						      <th>Date of Registration</th>
-						      <th>Profile pic</th>
+						      <th>Browser</th>
+						      <th>IP Address</th>
+						      <th>Country</th>
+						      <th>city</th>
+						      <th>Region </th>
+						      <th>latitude</th>
+						      <th>longitude</th>
+						      <th>Date  </th>
+						      <th>Time</th>
+						      <th>View Count</th>
 						    </tr>
 						  </thead>
 
@@ -115,5 +102,6 @@ $row.=  "
 
 
 	</body>
+
 </html>
 

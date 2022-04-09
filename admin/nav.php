@@ -84,6 +84,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="./visitors.php" class="d-flex">
+                                        <p>Website Visitors</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="logout.php" class="d-flex">
                                         <p>Logout</p>
                                      
