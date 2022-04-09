@@ -37,8 +37,8 @@
                             <ul style="font-weight:600;" class="list cat-list">
                             </li>
                                 <li>
-                                    <a href="home.php" class="d-flex">
-                                        <p style="color: var(--main-color)">Home</p>
+                                    <a href="allusers.php" class="d-flex">
+                                        <p>All Users</p>
                                         
                                     </a>
                                 </li>
@@ -72,12 +72,6 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="querries.php" class="d-flex">
-                                        <p>Querries</p>
-                               
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="../chat/users.php" class="d-flex">
                                         <p>Chat With Clients</p>
                                
@@ -85,7 +79,31 @@
                                 </li>
                                 <li>
                                     <a href="./visitors.php" class="d-flex">
-                                        <p>Website Visitors</p>
+                                        <p>Website visitors</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="deleteTestimonial.php" class="d-flex">
+                                        <p>Testimonials</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="querries.php" class="d-flex">
+                                        <p>All Querries</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="addAdmin.php" class="d-flex">
+                                        <p>Add Admin</p>
+                               
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="admins.php" class="d-flex">
+                                        <p style="color: var(--main-color)">Admins</p>
                                
                                     </a>
                                 </li>
@@ -97,18 +115,6 @@
                                 </li>
                             </ul>
                         </aside>
-                        <div class="admin">
-                            <h5>Admin Details</h5>
-                            <p class="admin-info">Name: Shuja Ur Rahman</p>
-                            <p class="admin-info">UserName: AdminShuja</p>
-                            <p class="admin-info">Profile Picture</p>
-                            <img src="../static/img/admin.jpg" alt="">
-
-                            <p class="admin-info">Website Designed and Coded By Shuja ur Rahman</p>
-                            <p class="admin-info">Faculty Number : 2019CAB009</p>
-                            <p class="admin-info">Supervisor: Dr Ziyyyauddin </p>
-                            <p class="admin-info">Copyright @2022 All rights reserved.</p>
-                        </div>
 
                         
                         </div>

@@ -24,10 +24,11 @@ $date = $data->{"date"};
 $time = $data->{"time"};
 $count = $data->{"count"};
 
+
 $row.=  "
 <tr class='alert' role='alert'>
   <td>$browser</td>
-  <td>$ip</td>
+  <td><strong>$ip</strong></td>
   <td>$country</td>
   <td>$city</td>
   <td>$region</td>
@@ -35,12 +36,15 @@ $row.=  "
   <td>$longitude</td>
   <td>$date</td>
   <td>$time</td>
-  <td>$count</td>
-
+  <td style='font-size:18px;'><strong>$count</strong></td>
 </tr>";
 
 }
 
+        if(isset($_GET) and isset($_GET['clear'])){
+       $delete = "DELETE FROM `visitors`";
+       $result = mysqli_query($conn, $delete);
+}
 
 
 ?>
@@ -60,7 +64,8 @@ $row.=  "
 
 	</head>
 
-    <button style="position:relative !important; top:0; right:0;background-color:#00ADB5; color:#fff;" onclick="window.location.href='./home.php'">Back to Admin Panel</button>
+    <button style="position:relative !important; top:0; right:0;background-color:#00ADB5; color:#fff;" onclick="window.location.href='./admins.php'">Back to Admin Panel</button>
+    <button style="position:relative !important; top:0; right:auto;background-color:#00ADB5; color:#fff;" onclick='clearIp()'>Clear ALL</button>
 
 	<body style="background-color:#f3f3f3 ;">
 			<div style="color:#00ADB5;" class="row justify-content-center">
@@ -77,12 +82,12 @@ $row.=  "
 						      <th>Browser</th>
 						      <th>IP Address</th>
 						      <th>Country</th>
-						      <th>city</th>
+						      <th>City</th>
 						      <th>Region </th>
 						      <th>latitude</th>
 						      <th>longitude</th>
-						      <th>Date  </th>
-						      <th>Time</th>
+						      <th>Last Visited Date  </th>
+						      <th>Last Visited Time</th>
 						      <th>View Count</th>
 						    </tr>
 						  </thead>
@@ -102,6 +107,11 @@ $row.=  "
 
 
 	</body>
+    <script>
+    function clearIp(){
+        window.location=`?clear`;
+    }
+    </script>
 
 </html>
 

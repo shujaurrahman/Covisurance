@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="refresh" content="300" name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SENIOR PROJECT</title>
+
   <?php
   require "./partials/conn.php";
   require "./partials/link.php";
@@ -667,6 +668,7 @@ if(!$boolLoggedIn){
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="./static/js/modal.js"></script>
+
 </body>
 
 </html>

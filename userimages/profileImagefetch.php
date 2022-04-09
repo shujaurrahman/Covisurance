@@ -16,9 +16,7 @@ if ($boolLoggedIn) {
 if (empty($Dimage)) {
 	$profilepic= "<img src='../static/img/default.jpg' alt=''>";
 } else {
-	// $profilepic = "<img src='../userimages/$currentUser.$Dimage' alt='../userimages/deafault.svg'>";
 
-	//new
-	// echo "$Dimage";
 	$profilepic = "<img src='../userimages/$Dimage' alt='../userimages/deafault.svg'>";
 }
+?>

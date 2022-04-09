@@ -20,7 +20,7 @@ $logout = "../logout/logout.php?username=$currentUser";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dassboard-user</title>
+    <title>Dassboard-<?php echo $currentUser;?></title>
     <?php
     require "../partials/link.php";
     ?>
@@ -100,6 +100,17 @@ $logout = "../logout/logout.php?username=$currentUser";
     </div>
        
     <?php 
+    date_default_timezone_set('Asia/Calcutta');
+
+        $Hour = date('G');
+
+        if ( $Hour >= 5 && $Hour <= 11 ) {
+            $greeting ="Good Morning";
+        } else if ( $Hour >= 12 && $Hour <= 18 ) {
+            $greeting ="Good Afternoon";
+        } else if ( $Hour >= 19 || $Hour <= 4 ) {
+            $greeting ="Good Evening";
+        }
        $sql = "SELECT * FROM `appliedpolicy` Where `username`='$currentUser' and `action` = 0";
        $result = mysqli_query($conn,$sql);
        $aff = mysqli_affected_rows($conn);
@@ -108,9 +119,10 @@ $logout = "../logout/logout.php?username=$currentUser";
       echo "<small> Click to get soft copy with  current<br> policy details to your email.</small> 
       $button";}
       
-      echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> Welcome, $currentUser</h2>";
+      echo "<h2 style='margin-left:15%; font-weight:500;' class='tittle-sm'> $greeting&nbsp, $currentUser</h2>";
     echo "$policyCardBlock";
     echo "$payments";
+
     if ($boolLoggedIn) {
         $sql = "SELECT * FROM `alluser` Where username ='$currentUser'";
         $result = mysqli_query($conn, $sql);

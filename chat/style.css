@@ -246,6 +246,18 @@ body{
   margin-left: 10px;
   max-width: calc(100% - 130px);
 }
+.chat-box .outgoing img{
+  height: 35px;
+  width: 35px;
+  display: flex;
+  
+}
+
+.chat-box .outgoing .details{
+  margin-right: 10px;
+  max-width: calc(100% - 130px);
+}
+
 .incoming .details p{
   background: #fff;
   color: var(--dark-three);

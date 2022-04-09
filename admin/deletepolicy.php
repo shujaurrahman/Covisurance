@@ -111,8 +111,6 @@ $policyCardBlock="<section class='services section' id='services'>
 <?php 
 		require "./nav.php";
 		if($fetch){
-			        // for Deletion of the policy javascripst gets this when admin click on del button which activates 
-		// delpolicy function 
 		$alerMssg = "";
         $alertError = "";
         $alertDisplay = "none";
@@ -123,7 +121,7 @@ $policyCardBlock="<section class='services section' id='services'>
                 $sql = "DELETE FROM `policycards`  WHERE `id` = '$id'";
                 $result = mysqli_query($conn,$sql);
                 if($_GET['delpolicy']){
-					$alertMssg = "The Policy Once Deleted Will be Erased.Action Can not be reversed Now. ";
+					$alertMssg = "Policy once Deleted Will be Erased. Action Can not be reversed Now.Refresh Now";
 					$alertError = "class = 'error'";
 					$alertDisplay = "block";
 					echo "<p $alertError style='display: $alertDisplay;'>$alertMssg</p>";

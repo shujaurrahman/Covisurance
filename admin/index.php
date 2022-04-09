@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION) and isset($_SESSION["adminusername"])){  
 	 $currentName=$_SESSION["adminusername"];
     $boolAdminLoggedIn = true;  
-    	header("location: ./home.php"); 
+    	header("location: ./admins.php"); 
 }
 
 
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE email = 'adminshuja@gmail.com'");
             $_SESSION['unique_id'] = '123456789'; 
             $_SESSION['email'] = 'adminshuja@gmail.com';    
-            header("location: ./home.php");
+            header("location: ./admins.php");
         }
         elseif(!password_verify($userPassword,$passwordInDatabase)){
             $boolAdminPasswordMatch =false;
