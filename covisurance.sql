@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 09, 2022 at 07:19 PM
+-- Generation Time: Apr 10, 2022 at 04:42 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -94,7 +94,7 @@ CREATE TABLE `appliedpolicy` (
   `address` varchar(110) NOT NULL,
   `p_name` varchar(110) NOT NULL,
   `p_cat` varchar(110) NOT NULL,
-  `p_premium` varchar(110) NOT NULL,
+  `p_premium` int(110) NOT NULL,
   `p_coverage` varchar(110) NOT NULL,
   `pancard` varchar(110) NOT NULL,
   `phone` varchar(110) NOT NULL,
@@ -113,7 +113,9 @@ CREATE TABLE `appliedpolicy` (
 --
 
 INSERT INTO `appliedpolicy` (`id`, `first_name`, `last_name`, `gender`, `f_name`, `m_name`, `dob`, `email`, `address`, `p_name`, `p_cat`, `p_premium`, `p_coverage`, `pancard`, `phone`, `pan_image`, `aadhar_image`, `medical_image`, `pass_image`, `unique_id`, `username`, `action`, `date`) VALUES
-(1, 'Shuja', 'Rahman', 'Male', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 XYZ', 'Diamond', 'asdsad', 'asdasd', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '750870689', 'shujaurrahman', 0, '2022-04-06 00:55:52');
+(1, 'Shuja', 'Rahman', 'Male', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 XYZ', 'Diamond', 200, 'asdasd', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '750870689', 'shujaurrahman', 1, '2022-04-06 00:55:52'),
+(22, 'Shuja', 'Rahman', 'zxcvzd', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 G', 'Diamond', 7000, '800000', 'EIEPR3194G', '07579966178', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanPancard.jpg', 'shujaurrahmanpassportsize.jpg', '751024231', 'shujaurrahman', 0, '2022-04-10 07:26:05'),
+(23, 'Shuja', 'Rahman', 'Male', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 G', 'Diamond', 7000, '800000', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '526881475', 'shujaurrahman', 0, '2022-04-10 07:28:32');
 
 -- --------------------------------------------------------
 
@@ -196,8 +198,37 @@ CREATE TABLE `notify` (
 --
 
 INSERT INTO `notify` (`id`, `username`, `email`, `account_created`, `email_verified`, `signed_in`, `password_reset`, `update_info`, `profile_pic`, `policy_app`, `policy_claimed`, `admin_review`, `approved`, `disapproved`, `download_pdf`, `question`, `logout`, `payment_success`, `pdf`, `date`, `pass_activity`) VALUES
-(1, 'shujaurrahman', 'Shujaurrehman210@gmail.com', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL),
+(1, 'shujaurrahman', 'Shujaurrehman210@gmail.com', NULL, NULL, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL),
 (3, 'Shuja', 'devilrahman210@gmail.com', 1, 1, 1, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(255) NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `paid` int(255) DEFAULT NULL,
+  `unique_id` int(255) DEFAULT NULL,
+  `id_pol` int(255) DEFAULT NULL,
+  `next_date` date DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `username`, `first_name`, `last_name`, `email`, `phone`, `paid`, `unique_id`, `id_pol`, `next_date`, `date`, `time`, `status`) VALUES
+(15, 'shujaurrahman', 'Shuja', 'Rahman', 'Shujaurrehman210@gmail.com', '07579966178', 7000, 751024231, 22, '2022-05-10', '2022-04-10', '03:11:42', 'paid');
 
 -- --------------------------------------------------------
 
@@ -301,7 +332,8 @@ CREATE TABLE `visitors` (
 --
 
 INSERT INTO `visitors` (`id`, `browser`, `ip`, `county`, `city`, `region`, `latitude`, `longitude`, `date`, `time`, `count`) VALUES
-(1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36', '::1', '-', '-', '-', '0', '0', '2022-04-09', '02:42:51', 42);
+(1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36', '::1', '-', '-', '-', '0', '0', '2022-04-09', '02:42:51', 5),
+(2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36', '127.0.0.1', '-', '-', '-', '0', '0', '2022-04-10', '03:37:28', 5);
 
 --
 -- Indexes for dumped tables
@@ -349,6 +381,13 @@ ALTER TABLE `notify`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- Indexes for table `policycards`
 --
 ALTER TABLE `policycards`
@@ -393,7 +432,7 @@ ALTER TABLE `alluser`
 -- AUTO_INCREMENT for table `appliedpolicy`
 --
 ALTER TABLE `appliedpolicy`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `contactus`
@@ -412,6 +451,12 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `notify`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `policycards`
@@ -435,7 +480,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -388,33 +388,51 @@ $payments="";
                 $date = $data->{'date'};
                 $newDate = date("j-F Y", strtotime($date));
                 $newTime = date("l, g:i a", strtotime($date));
-                  
 
+    $innerSql2 = "SELECT * FROM `payments` Where `username`= '$currentUser' and `status`='paid'";
+    $resultSql2 = mysqli_query($conn,$innerSql2);
+    $data = mysqli_fetch_assoc($resultSql2);
+    $paid_on=$data["date"];
+    $time=$data["time"];
+    $due_date=$data["next_date"];
+    date_default_timezone_set('UTC');
+    $Current_date = date("Y-m-d");
+
+    if($due_date===$Current_date){
 $payments="<section class='chat-us' id=''>
 <div class='container'>
-  <h3 class='title' data-title='Pay your premium for'>$policyName <h4>With Id $unique_id</h4></h3>
+  <h3 class='title' data-title='Pay your premium Installments for'>$policyName <h4>With Id $unique_id</h4></h3>
   <p class='text'>
-    Pay your Current Active policy premium here for $policyName that covers
-    $policyCoverage everymonth.<br> Otherwise admin will Disapprove  your application
-    of claim when you will process it. <br>
-    You have applied this policy on $newDate at $newTime,
-    Pay in +5 to +10 <br> days ahead of policy applied date of every month.
-    If you have any questions, don't <br> hesitate talk with us! 
-     Send your Question through Contact us section our admin will answer!
+  Pay your Current Active policy premium here for $policyName that covers
+  $policyCoverage everymonth.
+  Last Premium Payment was paid on $paid_on at $time <br>
+    You applied this policy on $newDate at $newTime,
+    If you have any questions, don't <br> hesitate Chat with us Now!<br><br>
+    <a href='../partials/payscript.php?id=$id' class='btn'>Pay Now</a>
   </p>
-<div class='razorpay-embed-btn' data-url='https://pages.razorpay.com/pl_J875FCFkuOEgcL/view' data-text='Pay Now' data-color='#00ADB5' data-size='large'>
-  <script>
-    (function(){
-      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-      rzp && rzp.init && rzp.init()}})();
-  </script>
 </div>
 
 </div>
 </section>
 </main>";
+}
+else{
+      $payments="<section class='chat-us' id=''>
+      <div class='container'>
+        <h3 class='title' data-title='Next Due Date For'>$policyName <h4>With Id $unique_id</h4></h3>
+        <p class='text'>
+        Your Next due Date for Premium Payment is <strong> $due_date </strong>
+        Last Premium Payment was paid on $paid_on at $time.
+          You applied this policy on $newDate at $newTime,
+          If you have any questions, don't hesitate Chat with us Now!<br><br>
+        </p>
+      </div>
+      
+      </div>
+      </section>
+      </main>";
+
+    }
       }
 else{
   $id="";

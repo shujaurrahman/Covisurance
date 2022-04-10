@@ -88,12 +88,15 @@ $newpass = $currentUser.$pass; //new image src
    move_uploaded_file($tmpName4,$path.$currentUser.$p_name.'/'.$newpass);
    $sql2="UPDATE `notify` SET `policy_app`= '1' WHERE `username`='$currentUser'";
    $result2=mysqli_query($conn,$sql2);
-
+   
+   $innerSql2 = "SELECT * FROM `appliedpolicy` Where `username`='$currentUser' and `action` = 0 ";
+   $resultSql2 = mysqli_query($conn,$innerSql2);
+   $data = mysqli_fetch_object($resultSql2);
+       $id=$data->{"id"};
    }
    else{
        echo "Doc Images doesn't got stored in our database,contact admin ";
    }
-
 }
 
 
@@ -190,8 +193,8 @@ $newpass = $currentUser.$pass; //new image src
                                     echo "
                                     <script>
                                     setInterval(() => {
-                                      window.location = 'https://pages.razorpay.com/pl_J875FCFkuOEgcL/view';
-                                    }, 6000);
+                                      window.location = '../partials/payscript.php?id=$id';
+                                    }, 5000);
                                     </script>
                                     ";
                                     exit();

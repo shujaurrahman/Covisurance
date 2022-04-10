@@ -135,6 +135,37 @@ $logout = "../logout/logout.php?username=$currentUser";
     else{
     $sql = mysqli_query($conn, "UPDATE users SET img = '{$image}' WHERE email = '{$email}'");
     }
+    if (isset($_GET) and isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql = "SELECT * FROM `appliedpolicy`  WHERE `id`=$id";
+    $result = mysqli_query($conn, $sql);
+    $data = mysqli_fetch_object($result);
+    $first_name=$data->{"first_name"};
+    $last_name=$data->{"last_name"};
+    $email=$data->{"email"};
+    $policyPremium=$data->{"p_premium"};
+    $phone=$data->{"phone"};
+    $unique_id=$data->{"unique_id"};
+    $userName=$data->{"username"};
+    date_default_timezone_set('UTC');
+        $date = date("Y-m-d");
+        $next_date= date('Y/m/d',strtotime('+30 days',strtotime($date)));
+        $time = date("H:i:s");
+     
+    $sql = "INSERT INTO `payments` (`first_name`, `last_name`, `email`,`paid`,`phone`,`unique_id`,`username`,`next_date`,`date`,`time`,`id_pol`,`status`) VALUES ('$first_name','$last_name','$email','$policyPremium','$phone', '$unique_id','$currentUser','$next_date','$date','$time','$id','paid')";
+    $result = mysqli_query($conn, $sql);
+
+    if (isset($_GET) and isset($_GET['id'])){
+        $id=$_GET['id'];
+        date_default_timezone_set('UTC');
+        $date = date("Y-m-d");
+        $next_date= date('Y/m/d',strtotime('+30 days',strtotime($date)));        
+        $sql2 = "UPDATE `payments` SET `next_date`='$next_date' ,`date`='$date' WHERE `id_pol`=$id ";
+        $result = mysqli_query($conn, $sql2);
+
+}
+    }
+
     ?>
 
     <script>
