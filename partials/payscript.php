@@ -10,7 +10,7 @@ else{
 }
 
 require "../partials/conn.php";
- $apiKey = "YOUR API KEY";
+$apiKey = "rzp_test_QnOCeLecOOUtYl";
 $id=$_GET['id'];
 $sql = "SELECT * FROM `appliedpolicy`  WHERE `id`=$id";
 $result = mysqli_query($conn, $sql);

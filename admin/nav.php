@@ -54,6 +54,11 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="payments.php" class="d-flex">
+                                        <p >Client Payments</p>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="approveclaim.php" class="d-flex">
                                         <p>Pending Policy</p>
                                         

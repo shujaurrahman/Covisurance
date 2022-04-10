@@ -154,15 +154,27 @@ $logout = "../logout/logout.php?username=$currentUser";
      
     $sql = "INSERT INTO `payments` (`first_name`, `last_name`, `email`,`paid`,`phone`,`unique_id`,`username`,`next_date`,`date`,`time`,`id_pol`,`status`) VALUES ('$first_name','$last_name','$email','$policyPremium','$phone', '$unique_id','$currentUser','$next_date','$date','$time','$id','paid')";
     $result = mysqli_query($conn, $sql);
-
+    if($result){
+    echo "
+            <script>
+            window.location = '../claim/paymentinvoice.php';
+            </script>
+            ";
+        }
     if (isset($_GET) and isset($_GET['id'])){
         $id=$_GET['id'];
         date_default_timezone_set('UTC');
         $date = date("Y-m-d");
         $next_date= date('Y/m/d',strtotime('+30 days',strtotime($date)));        
-        $sql2 = "UPDATE `payments` SET `next_date`='$next_date' ,`date`='$date' WHERE `id_pol`=$id ";
+        $sql2 = "UPDATE `payments` SET `next_date`='$next_date' ,`date`='$date',`status`='paid' WHERE `id_pol`=$id ";
         $result = mysqli_query($conn, $sql2);
-
+        if($result){
+        echo "
+        <script>
+        window.location = '../claim/paymentinvoice.php';
+        </script>
+        ";
+    }
 }
     }
 

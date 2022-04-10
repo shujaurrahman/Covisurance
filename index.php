@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="refresh" content="300" name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENIOR PROJECT</title>
+  <title>Covisurance</title>
 
   <?php
   require "./partials/conn.php";
@@ -124,7 +124,11 @@
         $loginError = "class = 'error'";
         $loginDisplay = "block";
       }
-
+      if (isset($_GET) and isset($_GET['paymentinvoicemailed'])){
+        $loginMssg = "Payment Was Successfull. Invoice Sent to your Email.";
+        $loginError = "class = 'error'";
+        $loginDisplay = "block";
+      }
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
         $password = $_POST["password"];

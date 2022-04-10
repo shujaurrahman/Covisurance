@@ -389,7 +389,7 @@ $payments="";
                 $newDate = date("j-F Y", strtotime($date));
                 $newTime = date("l, g:i a", strtotime($date));
 
-    $innerSql2 = "SELECT * FROM `payments` Where `username`= '$currentUser' and `status`='paid'";
+    $innerSql2 = "SELECT * FROM `payments` Where `username`= '$currentUser'";
     $resultSql2 = mysqli_query($conn,$innerSql2);
     $data = mysqli_fetch_assoc($resultSql2);
     $paid_on=$data["date"];
@@ -415,6 +415,8 @@ $payments="<section class='chat-us' id=''>
 </div>
 </section>
 </main>";
+$sql2 = "UPDATE `payments` SET `status`='unpaid' WHERE `username`='$currentUser'";
+$result = mysqli_query($conn, $sql2);
 }
 else{
       $payments="<section class='chat-us' id=''>
