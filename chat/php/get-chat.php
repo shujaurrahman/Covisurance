@@ -35,17 +35,22 @@ if (empty($Dimage)) {
                     $output .= '<div class="chat outgoing">
                     
                     <div class="details">
+                    
                     <p>'. $row['msg'] .'</p>
                     </div>
                     ' .$profilepic.' 
-                                </div>';
+                    </div>
+                    <img class="media-out" src="media/'.$row['media'].'" alt="">
+                    ';
                 }else{
                     $output .= '<div class="chat incoming">
-                                <img src="../userimages/'.$row['img'].'" alt="">
-                                <div class="details">
-                                    <p>'. $row['msg'] .'</p>
-                                </div>
-                                </div>';
+                    <img src="../userimages/'.$row['img'].'" alt="">
+                    <div class="details">
+                    <p>'. $row['msg'] .'</p>
+                    </div>
+                    </div>
+                    <img class="media-in" src="media/'.$row['media'].'" alt="">
+                    ';
                 }
             }
         }else{

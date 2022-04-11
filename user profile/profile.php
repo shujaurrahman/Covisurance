@@ -151,7 +151,9 @@ $logout = "../logout/logout.php?username=$currentUser";
         $date = date("Y-m-d");
         $next_date= date('Y/m/d',strtotime('+30 days',strtotime($date)));
         $time = date("H:i:s");
-     
+    
+    $delete="DELETE FROM `payments` WHERE `username`='$currentUser'";
+    $result = mysqli_query($conn, $delete);
     $sql = "INSERT INTO `payments` (`first_name`, `last_name`, `email`,`paid`,`phone`,`unique_id`,`username`,`next_date`,`date`,`time`,`id_pol`,`status`) VALUES ('$first_name','$last_name','$email','$policyPremium','$phone', '$unique_id','$currentUser','$next_date','$date','$time','$id','paid')";
     $result = mysqli_query($conn, $sql);
     if($result){
