@@ -270,16 +270,34 @@ body{
   
 }
 
+ .reply{
+  background-color: var(--light-three);
+  color: var(--dark-two);
+  padding: 5px 11rem;
+  font-size: 15px;
+  border-radius: 5px;
+}
+ .message{
+  background-color: var(--light-four);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
 .chat-box .outgoing .details{
   margin-right: 10px;
   max-width: calc(100% - 130px);
 }
+
+
 
 .incoming .details p{
   background: #fff;
   color: var(--dark-three);
   border-radius: 18px 18px 18px 0;
 }
+
+
+
 .typing-area{
   padding: 18px 30px;
   display: flex;

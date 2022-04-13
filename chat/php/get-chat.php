@@ -6,7 +6,7 @@ if (isset($_SESSION) and isset($_SESSION['username'])) {
 	$currentUser = $_SESSION['username'];
 	$boolLoggedIn = true;
 } else {
-	//   header("Location: ../index.php");
+	  header("Location: ../index.php");
 }
 if ($boolLoggedIn) {
 	$sql = "SELECT * FROM `alluser` Where username ='$currentUser'";
@@ -32,16 +32,31 @@ if (empty($Dimage)) {
         if(mysqli_num_rows($query) > 0){
             while($row = mysqli_fetch_assoc($query)){
                 if($row['outgoing_msg_id'] === $outgoing_id){
-                    $output .= '<div class="chat outgoing">
-                    
-                    <div class="details">
-                    
-                    <p>'. $row['msg'] .'</p>
+                    $reply="";
+                    $id=$row['msg_id'];
+                    $msg=$row['msg'];
+                    $media=$row['media'];
+                    // $output .= '<div class="chat outgoing">
+                    // <div class="details">
+                    // <button class="message" onclick="messageRep('.$id.')"">
+                    // <p>'. $row['msg'].'</p>
+                    // </button>
+                    // </div>
+                    // ' .$profilepic.'
+                    // </div>
+                    // <img class="media-out" src="media/'.$row['media'].'" alt="">
+                    // ';
+                    $output .= "<div class='chat outgoing'>
+                    <div class='details'>
+                    <button class='message' onclick='messageRep($id)'>
+                    <p>$msg</p>
+                    </button>
                     </div>
-                    ' .$profilepic.' 
+                    $profilepic
                     </div>
-                    <img class="media-out" src="media/'.$row['media'].'" alt="">
-                    ';
+                    <img class'media-out' src='media/$media' alt=''>
+                    ";
+                    
                 }else{
                     $output .= '<div class="chat incoming">
                     <img src="../userimages/'.$row['img'].'" alt="">
@@ -60,6 +75,4 @@ if (empty($Dimage)) {
     }else{
         header("location: ../index.php");
     }
-    
-
 ?>

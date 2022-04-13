@@ -30,6 +30,15 @@
 
       </header>
       <?php
+      $reply="";
+              if (isset($_GET) and isset($_GET['reply'])){
+                $id=$_GET['reply'];
+                $sql="SELECT * FROM `messages` WHERE `msg_id` =$id";
+                $result=mysqli_query($conn,$sql);
+                $row = mysqli_fetch_array($result);
+                $reply='<small class="reply"><i><b>Reply to:</b> '. $row['msg'] .'</i></small>';
+    
+            }
         $outgoing_id = $_SESSION['unique_id'];
         if(isset($_GET) and isset($_GET['clearChat'])){
              
@@ -57,8 +66,10 @@
         }
       ?>
       <div class="chat-box">
-
       </div>
+       <?php
+        echo $reply;
+       ?>
       <form action="#" class="typing-area" enctype='multipart/form-data'>
         <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         <input type="file" class="novisible" id="file_upload" name="media" accept='image/*'>
@@ -75,8 +86,13 @@
     <script>
     function clearChat(){     
         window.location = `chat.php?user_id=$user_id&clearChat`;
-}
-  </script>"
-?>
+      }
+      function messageRep(id){     
+        window.location = `chat.php?user_id=${user_id}&reply=${id}`;
+      }
+      
+      </script>"
+      ?>
+
 </body>
 </html>

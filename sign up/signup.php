@@ -263,7 +263,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $msgend= "If this wasn't you ignore this message.";
         $subject = "Email Verification Code";
 
-        // function for mail 
               require "../partials/mail.php";
 
             $otpmssg="We've sent a verification code to - $email" ;
