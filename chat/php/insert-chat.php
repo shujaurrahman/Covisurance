@@ -10,9 +10,9 @@
         $path='../media/';
         $imageName=$image;
         if(!empty($message)){
-            $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg ,media)
-                                        VALUES ({$incoming_id}, {$outgoing_id}, '{$message}','{$imageName}')") or die();
-            		move_uploaded_file($tmpName,$path.$imageName);
+            $sql = mysqli_query($conn, "INSERT INTO messages (incoming_msg_id, outgoing_msg_id, msg ,media,reply)
+                                        VALUES ({$incoming_id}, {$outgoing_id}, '{$message}','{$imageName}','{$rep}')") or die();
+            		      move_uploaded_file($tmpName,$path.$imageName);
         }
     }else{
         header("location: ../login.php");

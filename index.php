@@ -168,7 +168,6 @@
                 $status = "Online now";
                 $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE email = '{$email}'");
                 $_SESSION['unique_id'] = $result['unique_id'];
-                echo "success";
             }else{
                 echo "This email address not Exist!";
             }

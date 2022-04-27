@@ -34,37 +34,30 @@ if (empty($Dimage)) {
                 if($row['outgoing_msg_id'] === $outgoing_id){
                     $reply="";
                     $id=$row['msg_id'];
-                    $msg=$row['msg'];
-                    $media=$row['media'];
-                    // $output .= '<div class="chat outgoing">
-                    // <div class="details">
-                    // <button class="message" onclick="messageRep('.$id.')"">
-                    // <p>'. $row['msg'].'</p>
-                    // </button>
-                    // </div>
-                    // ' .$profilepic.'
-                    // </div>
-                    // <img class="media-out" src="media/'.$row['media'].'" alt="">
-                    // ';
-                    $output .= "<div class='chat outgoing'>
-                    <div class='details'>
-                    <button class='message' onclick='messageRep($id)'>
-                    <p>$msg</p>
+                    $rep=$row['msg'];
+                    $output .= '<div class="chat outgoing">
+                    <div class="details">
+                    <button class="message" onclick="messageRep('.$id.')"">
+                    <p>'. $row['msg'].'</p>
                     </button>
                     </div>
-                    $profilepic
+                    ' .$profilepic.'
                     </div>
-                    <img class'media-out' src='media/$media' alt=''>
-                    ";
+                    <img class="media-out" src="media/'.$row['media'].'" alt="">
+                    <div class="replied-outgoing"><small ><b>You:</b> Reply</small></div>
+                    ';
                     
                 }else{
                     $output .= '<div class="chat incoming">
+                    <button class="message" onclick="messageRep('.$id.')"">
                     <img src="../userimages/'.$row['img'].'" alt="">
                     <div class="details">
                     <p>'. $row['msg'] .'</p>
+                    </button>
                     </div>
                     </div>
                     <img class="media-in" src="media/'.$row['media'].'" alt="">
+                    <div class="replied-incoming"><small ><b>You:</b> Reply</small></div>
                     ';
                 }
             }

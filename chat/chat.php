@@ -36,8 +36,8 @@
                 $sql="SELECT * FROM `messages` WHERE `msg_id` =$id";
                 $result=mysqli_query($conn,$sql);
                 $row = mysqli_fetch_array($result);
-                $reply='<small class="reply"><i><b>Reply to:</b> '. $row['msg'] .'</i></small>';
-    
+                $reply='<div class="reply"><small ><b>Reply to:</b> '. $row['msg'] .'</small></div>';
+
             }
         $outgoing_id = $_SESSION['unique_id'];
         if(isset($_GET) and isset($_GET['clearChat'])){
@@ -50,10 +50,6 @@
              (`outgoing_msg_id`={$user_id} AND `incoming_msg_id`='$outgoing_id')
              ";
              $result=mysqli_query($conn,$sql);
-             while($row=mysqli_fetch_array($result)){
-               $image=$row['media'];
-               unlink("media/$image");
-             }
 
              $sql2="DELETE
              FROM messages
@@ -70,7 +66,7 @@
        <?php
         echo $reply;
        ?>
-      <form action="#" class="typing-area" enctype='multipart/form-data'>
+      <form action="#" class="typing-area" enctype='multipart/form-data' method="POST">
         <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         <input type="file" class="novisible" id="file_upload" name="media" accept='image/*'>
          <label for="file_upload" ><i class="fa fa-solid fa-image fa-2x upload"></i></label>
@@ -81,18 +77,20 @@
   </div>
 
   <script src="javascript/chat.js"></script>
-  <?php
-  echo "
-    <script>
+  <script>
     function clearChat(){     
-        window.location = `chat.php?user_id=$user_id&clearChat`;
-      }
-      function messageRep(id){     
+        window.location = `chat.php?user_id=${user_id}&clearChat`;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let user_id = urlParams.get('user_id');
+
+    function messageRep(id){
         window.location = `chat.php?user_id=${user_id}&reply=${id}`;
-      }
-      
-      </script>"
-      ?>
+    }
+    
+     
+  </script>
 
 </body>
 </html>

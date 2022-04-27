@@ -244,6 +244,7 @@ body{
 .chat-box .incoming .details{
   margin-right: auto;
   margin-left: 10px;
+  margin-bottom: 10px;
   max-width: calc(100% - 130px);
 }
 .chat-box .incoming .img{
@@ -271,11 +272,32 @@ body{
 }
 
  .reply{
-  background-color: var(--light-three);
-  color: var(--dark-two);
-  padding: 5px 11rem;
-  font-size: 15px;
+  background-color: var(--light-two);
+  color: var(--dark-three);
   border-radius: 5px;
+  padding: 6px 0;
+}
+ .replied-outgoing{
+  background-color: var(--light-two);
+  color: var(--dark-three);
+  border-radius: 5px;
+  /* margin-top: 5px; */
+  padding: 6px 0;
+  margin-left: auto;
+  max-width: calc(100% - 130px);
+}
+ .replied-incoming{
+  background-color: var(--light-two);
+  color: var(--dark-three);
+  border-radius: 5px;
+  /* margin-top: 5px; */
+  padding: 6px 0;
+  margin-right: auto;
+  max-width: calc(100% - 130px);
+}
+small{
+  font-size: 15px;
+ margin-left: 1rem;
 }
  .message{
   background-color: var(--light-four);
