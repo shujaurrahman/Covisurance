@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 10, 2022 at 04:42 AM
+-- Generation Time: Sep 22, 2022 at 03:17 PM
 -- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,14 +68,6 @@ CREATE TABLE `alluser` (
   `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `alluser`
---
-
-INSERT INTO `alluser` (`s_no`, `first_name`, `last_name`, `username`, `email`, `birthday`, `phonenumber`, `password`, `pancard`, `annual_income`, `_address`, `city`, `country`, `_image`, `date`, `code`, `status`) VALUES
-(45, 'Shuja', 'Rahman', 'shujaurrahman', 'Shujaurrehman210@gmail.com', '2022-04-21', '07579966178', '$2y$10$c9gjOUlE/c6NlgIfdzSYy.ys0Vx2eeF306tJFkXXfHCRMzFpmOheq', 'EIEPR3194G', '200000', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT', 'PILIBHIT', 'India', 'shujaurrahmanIMG_1145.jpg', '2022-04-04 02:15:13', 0, 'verified'),
-(46, 'Shuja', 'Rahman', 'Shuja', 'devilrahman210@gmail.com', '2022-04-09', '07579966178', '$2y$10$OnoUsAlZtsR9PVcTasljG.5dwlY5tSQfavCvlwRG1w3KGP9M/fInu', 'EIEPR3194G', '200000', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT', 'PILIBHIT', 'India', 'Shuja2.jpg', '2022-04-04 03:00:27', 0, 'verified');
-
 -- --------------------------------------------------------
 
 --
@@ -108,15 +100,6 @@ CREATE TABLE `appliedpolicy` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `appliedpolicy`
---
-
-INSERT INTO `appliedpolicy` (`id`, `first_name`, `last_name`, `gender`, `f_name`, `m_name`, `dob`, `email`, `address`, `p_name`, `p_cat`, `p_premium`, `p_coverage`, `pancard`, `phone`, `pan_image`, `aadhar_image`, `medical_image`, `pass_image`, `unique_id`, `username`, `action`, `date`) VALUES
-(1, 'Shuja', 'Rahman', 'Male', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 XYZ', 'Diamond', 200, 'asdasd', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '750870689', 'shujaurrahman', 1, '2022-04-06 00:55:52'),
-(22, 'Shuja', 'Rahman', 'zxcvzd', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 G', 'Diamond', 7000, '800000', 'EIEPR3194G', '07579966178', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanPancard.jpg', 'shujaurrahmanpassportsize.jpg', '751024231', 'shujaurrahman', 0, '2022-04-10 07:26:05'),
-(23, 'Shuja', 'Rahman', 'Male', 'Obaid', 'Parveen', '2022-04-21', 'Shujaurrehman210@gmail.com', 'HN0 805 MOHALLAH MOHD WASIL PILIBHIT  PILIBHIT  India', 'COVID-19 G', 'Diamond', 7000, '800000', 'EIEPR3194G', '07579966178', 'shujaurrahmanPancard.jpg', 'shujaurrahmanaadhaar.jpg', 'shujaurrahmanmdiacal.png', 'shujaurrahmanpassportsize.jpg', '526881475', 'shujaurrahman', 0, '2022-04-10 07:28:32');
-
 -- --------------------------------------------------------
 
 --
@@ -133,13 +116,6 @@ CREATE TABLE `contactus` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `contactus`
---
-
-INSERT INTO `contactus` (`s_no`, `username`, `name`, `email`, `subject`, `message`, `date`) VALUES
-(49, 'shujaurrahman', 'Shuja Ur Rahman', 'Shujaurrehman210@gmail.com', 'aya msg', 'A hi gaya hga', '2022-03-31 07:58:39');
-
 -- --------------------------------------------------------
 
 --
@@ -152,16 +128,6 @@ CREATE TABLE `messages` (
   `outgoing_msg_id` int(255) NOT NULL,
   `msg` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`msg_id`, `incoming_msg_id`, `outgoing_msg_id`, `msg`) VALUES
-(1, 845495143, 550019336, 'hye'),
-(2, 845495143, 550019336, 'hye'),
-(8, 845495143, 550019336, 'hye'),
-(9, 123456789, 550019336, 'hiii');
 
 -- --------------------------------------------------------
 
@@ -193,14 +159,6 @@ CREATE TABLE `notify` (
   `pass_activity` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `notify`
---
-
-INSERT INTO `notify` (`id`, `username`, `email`, `account_created`, `email_verified`, `signed_in`, `password_reset`, `update_info`, `profile_pic`, `policy_app`, `policy_claimed`, `admin_review`, `approved`, `disapproved`, `download_pdf`, `question`, `logout`, `payment_success`, `pdf`, `date`, `pass_activity`) VALUES
-(1, 'shujaurrahman', 'Shujaurrehman210@gmail.com', NULL, NULL, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL),
-(3, 'Shuja', 'devilrahman210@gmail.com', 1, 1, 1, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -222,13 +180,6 @@ CREATE TABLE `payments` (
   `time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `payments`
---
-
-INSERT INTO `payments` (`id`, `username`, `first_name`, `last_name`, `email`, `phone`, `paid`, `unique_id`, `id_pol`, `next_date`, `date`, `time`, `status`) VALUES
-(15, 'shujaurrahman', 'Shuja', 'Rahman', 'Shujaurrehman210@gmail.com', '07579966178', 7000, 751024231, 22, '2022-05-10', '2022-04-10', '03:11:42', 'paid');
 
 -- --------------------------------------------------------
 
@@ -298,15 +249,6 @@ CREATE TABLE `users` (
   `img` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `unique_id`, `fname`, `lname`, `email`, `status`, `img`) VALUES
-(6, 550019336, 'Shuja', 'Rahman', 'Shujaurrehman210@gmail.com', 'Online now', 'shujaurrahmanIMG_1145.jpg'),
-(7, 845495143, 'Shuja', 'Rahman', 'devilrahman210@gmail.com', 'Offline now', 'Shuja2.jpg'),
-(8, 123456789, 'Shuja', '(Admin)', 'adminshuja@gmail.com', 'Offline now', 'default.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -326,14 +268,6 @@ CREATE TABLE `visitors` (
   `time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `count` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `visitors`
---
-
-INSERT INTO `visitors` (`id`, `browser`, `ip`, `county`, `city`, `region`, `latitude`, `longitude`, `date`, `time`, `count`) VALUES
-(1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36', '::1', '-', '-', '-', '0', '0', '2022-04-09', '02:42:51', 5),
-(2, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36', '127.0.0.1', '-', '-', '-', '0', '0', '2022-04-10', '03:37:28', 5);
 
 --
 -- Indexes for dumped tables
@@ -426,37 +360,37 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `alluser`
 --
 ALTER TABLE `alluser`
-  MODIFY `s_no` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `s_no` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `appliedpolicy`
 --
 ALTER TABLE `appliedpolicy`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `s_no` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `policycards`
@@ -474,13 +408,13 @@ ALTER TABLE `testimonial`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

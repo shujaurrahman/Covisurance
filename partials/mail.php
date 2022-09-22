@@ -13,7 +13,7 @@
                   $m->SMTPAuth   = true;    
                   $m->SMTPSecure = 'tls';                             
                   $m->Username   = 'covisurance@gmail.com';                     
-                  $m->Password   = 'shuja@123';                               
+                  $m->Password   = 'imfqdtfdtgkbqqbt';                               
                   $m->Port = '587';   
                   $m->SMTPOptions = array(
                    'ssl' => array(

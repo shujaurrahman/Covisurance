@@ -13,14 +13,14 @@ Medical treatment is one of the major expenses in one’s life. Getting hospital
 For this people invest in health insurance but in today’s scenario getting claims from the insurance companies have become a very time taking process. 
 This problem has majorly scaled up during the Covid-19 situation. God-forbid, anyone gets Covid-positive there is an *urgent need for money* for tests, 
 ambulance service, medication, oxygen etc. and even after demise, the family members must get their claims as soon as possible to continue their livelihood. 
-**Our solution would increase the ease of getting health claims and greatly reduce the time span of the process for the wellbeing of the people.**
+**Our solution will increase the ease of getting health claims and greatly reduce the time span of the process for the wellbeing of the people.**
 
 
 ## 🟡 Idea Description: COVISURANCE
-The main objective of Covisurance is to automate process of application and claim between admin and user. the process is minial and secure totally online
-and no-visit service of any kind. the website offers registration of user to sign in and build thier profile Update details and profile pic etc
-payments gateway enable user to pay thier premium without being driven out of thier home just by one click which is intern secure by razopay.
-Claim process is minial and every next step of process is updated at profile and my policy section. 
+The main objective of Covisurance is to automate process of application and claim between admin and user. The process is minial and secure and totally online 
+with no-visit service of any kind. Website offers registration of user to sign in and build thier profile, Update details and profile pic etc
+payments gateway enable user to pay thier premium EMI without being driven out of thier home just by one click button available on dashboard which is intern secure by razopay.
+Claim process is minial and every next step of process is updated at profile and my policy section and in admin dashboard.
 Contact us and testimonials section are also available for querries and reviews which user can post.
 <br /><br />
 
@@ -42,17 +42,17 @@ adminPassword = Opssasur@786<br />
 
 ##### User panel:
 - Register/Sign Up.
-- Authetication of Email usimg SMTP 
+- Authetication of Email using SMTP 
 - Sign in and View User profile.
 - Reset Password by email authentication (SMTP).
-- Update prfile pic or update details.
+- Update profile pic or update details.
 - Change Password.
 - Apply any Policy from User profile Dassboard.
-- Pay premium of Current Policy -> Secure razopay gateway.
+- Pay premium EMI of Current Policy -> Secure razopay gateway.
 - Claim the insured Policy.
 - View all the applied policy in My policy.
 - Download the soft copy of Applied Policy.
-- Mail soft copy of current policy to your email.
+- Mail soft copy of current policy to your registered email.
 - Chat with other users, Discuss policies with them.
 - Chat with admin in case of any problem.
 - Get dedicated Notification for every activity in  Notification panel.
@@ -104,96 +104,95 @@ For more look in snapshots.<br />
 
 
 ## Snaptshots
-![alt text](./snaps/Screenshot%20(204).png)
-![alt text](./snaps/Screenshot%20(205).png)
-![alt text](./snaps/Screenshot%20(206).png)
-![alt text](./snaps/Screenshot%20(207).png)
-![alt text](./snaps/Screenshot%20(208).png)
-![alt text](./snaps/Screenshot%20(209).png)
-![alt text](./snaps/Screenshot%20(210).png)
-![alt text](./snaps/Screenshot%20(211).png)
-![alt text](./snaps/Screenshot%20(212).png)
-![alt text](./snaps/Screenshot%20(213).png)
-![alt text](./snaps/Screenshot%20(214).png)
-![alt text](./snaps/Screenshot%20(215).png)
-![alt text](./snaps/Screenshot%20(216).png)
-![alt text](./snaps/Screenshot%20(217).png)
-![alt text](./snaps/Screenshot%20(218).png)
-![alt text](./snaps/Screenshot%20(219).png)
-![alt text](./snaps/Screenshot%20(220).png)
-![alt text](./snaps/Screenshot%20(221).png)
-![alt text](./snaps/Screenshot%20(222).png)
-![alt text](./snaps/Screenshot%20(223).png)
-![alt text](./snaps/Screenshot%20(224).png)
-![alt text](./snaps/Screenshot%20(225).png)
-![alt text](./snaps/Screenshot%20(226).png)
-![alt text](./snaps/Screenshot%20(227).png)
-![alt text](./snaps/Screenshot%20(228).png)
-![alt text](./snaps/Screenshot%20(229).png)
-![alt text](./snaps/Screenshot%20(230).png)
-![alt text](./snaps/Screenshot%20(231).png)
-![alt text](./snaps/Screenshot%20(232).png)
-![alt text](./snaps/Screenshot%20(233).png)
-![alt text](./snaps/Screenshot%20(234).png)
-![alt text](./snaps/Screenshot%20(235).png)
-![alt text](./snaps/Screenshot%20(236).png)
-![alt text](./snaps/Screenshot%20(237).png)
-![alt text](./snaps/Screenshot%20(238).png)
-![alt text](./snaps/Screenshot%20(239).png)
-![alt text](./snaps/Screenshot%20(240).png)
-![alt text](./snaps/Screenshot%20(241).png)
-![alt text](./snaps/Screenshot%20(242).png)
-![alt text](./snaps/Screenshot%20(243).png)
-![alt text](./snaps/Screenshot%20(244).png)
-![alt text](./snaps/Screenshot%20(245).png)
-![alt text](./snaps/Screenshot%20(246).png)
-![alt text](./snaps/Screenshot%20(247).png)
-![alt text](./snaps/Screenshot%20(248).png)
-![alt text](./snaps/Screenshot%20(249).png)
-![alt text](./snaps/Screenshot%20(250).png)
-![alt text](./snaps/Screenshot%20(251).png)
-![alt text](./snaps/Screenshot%20(252).png)
-![alt text](./snaps/Screenshot%20(253).png)
-![alt text](./snaps/Screenshot%20(254).png)
-![alt text](./snaps/Screenshot%20(255).png)
-![alt text](./snaps/Screenshot%20(256).png)
-![alt text](./snaps/Screenshot%20(257).png)
-![alt text](./snaps/Screenshot%20(258).png)
-![alt text](./snaps/Screenshot%20(259).png)
-![alt text](./snaps/Screenshot%20(260).png)
-![alt text](./snaps/Screenshot%20(261).png)
-<br/>
+![alt text](./snaps/1.png)
+![alt text](./snaps/2.png)
+![alt text](./snaps/3.png)
+![alt text](./snaps/4.png)
+![alt text](./snaps/5.png)
+![alt text](./snaps/6.png)
+![alt text](./snaps/7.png)
+![alt text](./snaps/8.png)
+![alt text](./snaps/9.png)
+![alt text](./snaps/10.png)
+![alt text](./snaps/11.png)
+![alt text](./snaps/12.png)
+![alt text](./snaps/13.png)
+![alt text](./snaps/14.png)
+![alt text](./snaps/15.png)
+![alt text](./snaps/16.png)
+![alt text](./snaps/17.png)
+![alt text](./snaps/18.png)
+![alt text](./snaps/19.png)
+![alt text](./snaps/20.png)
+![alt text](./snaps/21.png)
+![alt text](./snaps/22.png)
+![alt text](./snaps/23.png)
+![alt text](./snaps/24.png)
+![alt text](./snaps/25.png)
+![alt text](./snaps/26.png)
+![alt text](./snaps/27.png)
+![alt text](./snaps/28.png)
+![alt text](./snaps/29.png)
+![alt text](./snaps/30.png)
+![alt text](./snaps/31.png)
+![alt text](./snaps/32.png)
+![alt text](./snaps/33.png)
+![alt text](./snaps/34.png)
+![alt text](./snaps/35.png)
+![alt text](./snaps/36.png)
+![alt text](./snaps/37.png)
+![alt text](./snaps/38.png)
+![alt text](./snaps/39.png)
+![alt text](./snaps/40.png)
+![alt text](./snaps/41.png)
+![alt text](./snaps/42.png)
+![alt text](./snaps/43.png)
+![alt text](./snaps/44.png)
+![alt text](./snaps/45.png)
+![alt text](./snaps/46.png)
+![alt text](./snaps/47.png)
+![alt text](./snaps/48.png)
+![alt text](./snaps/49.png)
+![alt text](./snaps/51.png)
+![alt text](./snaps/52.png)
+![alt text](./snaps/53.png)
+![alt text](./snaps/54.png)
+![alt text](./snaps/55.png)
+![alt text](./snaps/56.png)
+![alt text](./snaps/57.png)
+![alt text](./snaps/58.png)
+![alt text](./snaps/59.png)
+![alt text](./snaps/60.png)
+![alt text](./snaps/61.png)
+![alt text](./snaps/62.png)
+![alt text](./snaps/63.png)
+![alt text](./snaps/64.png)
+![alt text](./snaps/65.png)
+![alt text](./snaps/66.png)
+![alt text](./snaps/67.png)
+![alt text](./snaps/68.png)
+![alt text](./snaps/69.png)
+![alt text](./snaps/70.png)
+![alt text](./snaps/71.png)
+![alt text](./snaps/72.png)
+![alt text](./snaps/73.png)
+![alt text](./snaps/74.png)
+![alt text](./snaps/75.png)
+![alt text](./snaps/76.png)
+![alt text](./snaps/77.png)
+![alt text](./snaps/78.png)
+![alt text](./snaps/79.png)
+![alt text](./snaps/80.png)
+![alt text](./snaps/81.png)
+![alt text](./snaps/82.png)
+![alt text](./snaps/83.png)
+![alt text](./snaps/84.png)
+![alt text](./snaps/85.png)
+![alt text](./snaps/86.png)
+![alt text](./snaps/87.png)
+![alt text](./snaps/88.png)
 
 
-#### SMTP AUTHENTICATION ENABLED AND NEW FEATURES
-![alt text](./snaps/Screenshot%20(275).png)
-![alt text](./snaps/Screenshot%20(276).png)
-![alt text](./snaps/Screenshot%20(277).png)
-![alt text](./snaps/Screenshot%20(278).png)
-![alt text](./snaps/Screenshot%20(279).png)
-![alt text](./snaps/Screenshot%20(280).png)
-![alt text](./snaps/Screenshot%20(281).png)
-![alt text](./snaps/Screenshot%20(282).png)
-![alt text](./snaps/Screenshot%20(283).png)
-![alt text](./snaps/Screenshot%20(284).png)
-![alt text](./snaps/Screenshot%20(285).png)
-![alt text](./snaps/Screenshot%20(286).png)
-![alt text](./snaps/Screenshot%20(301).png)
-![alt text](./snaps/Screenshot%20(302).png)
-![alt text](./snaps/Screenshot%20(303).png)
-![alt text](./snaps/Screenshot%20(304).png)
-![alt text](./snaps/Screenshot%20(305).png)
-![alt text](./snaps/Screenshot%20(306).png)
-![alt text](./snaps/Screenshot%20(307).png)
-![alt text](./snaps/Screenshot%20(308).png)
-![alt text](./snaps/Screenshot%20(309).png)
-![alt text](./snaps/Screenshot%20(310).png)
-![alt text](./snaps/Screenshot%20(311).png)
-![alt text](./snaps/Screenshot%20(312).png)
-![alt text](./snaps/Screenshot%20(313).png)
-![alt text](./snaps/Screenshot%20(314).png)
-![alt text](./snaps/Screenshot%20(315).png)
-![alt text](./snaps/Screenshot%20(316).png)
 
 
 ![ForTheBadge built-by-developers](https://forthebadge.com/images/badges/built-by-developers.svg)
