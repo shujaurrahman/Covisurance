@@ -26,11 +26,16 @@ Contact us and testimonials section are also available for querries and reviews 
 
 ##### Admin panel:
 ###### (Hidden feature that only admins can access)<br /><br />
+- Admin IP is stored in database admin can login only from stored ip.
 - See All the Registered user on Website in a tabulated form.
 - Add new policies to the website.
 - Delete any Policy on Website
+- current EMI payments running notify form admin panel to user incase missed.
+- Chat directly to specific client from admin panel
+- Website visitor [Details of website visitor eg ip location activity etc geolocation api and website hits coded from scratch]
 - Approve/Disapprove User policy by viewing application once user has claimed from pending section
 - View all the disapproved applications also view specific disapproved application details.
+- Shuja Default[Supar admin can make sub admin based by castegory] 
 - View all the approved applications also view specific approved application details.
 - View all the user Querries.
 - Clear the querries/ Delete aprroved/Disapproved applications 
@@ -49,6 +54,7 @@ adminPassword = Opssasur@786<br />
 - Change Password.
 - Apply any Policy from User profile Dassboard.
 - Pay premium EMI of Current Policy -> Secure razopay gateway.
+- Recurring Emi pop up automatically after month pases until client has claimed policy [at a time one policy payments are alowed]~ 
 - Claim the insured Policy.
 - View all the applied policy in My policy.
 - Download the soft copy of Applied Policy.
